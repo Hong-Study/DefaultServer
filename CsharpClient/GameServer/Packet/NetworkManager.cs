@@ -19,18 +19,30 @@ namespace GameServer.Packet
 
         ClientSession session = new ClientSession();
 
-        public NetworkManager() 
-        {
-            
-        }
+        public NetworkManager() { }
 
         public void Connect()
         {
+            PacketManager.Instance.CustomHandle = new Action<ushort, IMessage>(RecvPacketQueue.Instance.PushBack);
             session.Start(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 7777));
         }
         public void Send(IMessage message, INGAME type)
         {
             session.Send(message, type);
+        }
+
+        public void Update()
+        {
+            List<Tuple<UInt16, IMessage>> values = RecvPacketQueue.Instance.PopAll();
+            foreach(Tuple<UInt16, IMessage> value in values)
+            {
+                Action<IMessage> action = null;
+                action = PacketManager.Instance.GetPakcetHandler(value.Item1);
+                if (action != null)
+                {
+                    action.Invoke(value.Item2);
+                }
+            }
         }
     }
 }

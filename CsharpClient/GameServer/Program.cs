@@ -18,7 +18,7 @@ namespace GameServer
 
             while (true)
             {
-                
+                NetworkManager.Instance.Update();
             }
         }
     }

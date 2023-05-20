@@ -20,7 +20,7 @@ namespace GameServer.Packet
         Queue<Tuple<UInt16, IMessage>> _queue = new Queue<Tuple<UInt16, IMessage>>();
 
         public void PushBack(UInt16 id, IMessage message) 
-        { 
+        {
             lock (_lock)
             {
                 _queue.Enqueue(new Tuple<UInt16, IMessage>(id, message));

@@ -10,6 +10,7 @@
 #define READ_MANY_LOCk(i) ReadLockGuard _guard##i(_lock[i], typeid(this).name())
 
 #define SESSIONS SessionManager::GetInstance()
+#define GQUEUEE GlobalQueue::GetInstance()
 
 #define CRASH(cause)						\
 {											\
@@ -28,6 +29,9 @@
 		__analysis_assume(expr);	\
 	}								\
 }
+
+using JobRef = std::shared_ptr<class Job>;
+using JobQueueRef = std::shared_ptr<class JobQueue>;
 
 using IocpObjectRef = std::shared_ptr<class IocpObject>;
 using SessionRef = std::shared_ptr<class Session>;

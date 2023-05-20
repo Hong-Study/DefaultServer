@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{c5552168-f16d-46f0-b10f-4f168588a2bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Head">
+      <UniqueIdentifier>{56666519-1819-4e7c-97b7-a37d99e70270}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Head</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="ProtoTest.pb.cc">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketHandler.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="ClinetSession.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Head</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtoTest.pb.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketHandler.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="ClinetSession.h">
+      <Filter>Packet</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

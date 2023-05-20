@@ -1,0 +1,30 @@
+﻿#include "pch.h"
+#include "Service.h"
+#include "SendBuffer.h"
+#include "ClinetSession.h"
+
+int main()
+{
+	SocketUtils::Init();
+	PacketHandler::Init();
+
+	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
+	
+	service->Start();
+
+	for (int32 i = 0; i < 5; i++)
+	{
+		GThreadManager->Launch([=]()
+			{
+				while (true)
+				{
+					service->GetIocpCore()->Dispatch();
+				}
+			});
+	}
+
+	GThreadManager->Join();
+
+	// 윈속 종료
+	SocketUtils::Clear();
+}

@@ -9,8 +9,21 @@
 #define READ_LOCK ReadLockGuard _guard(_lock, typeid(this).name())
 #define READ_MANY_LOCk(i) ReadLockGuard _guard##i(_lock[i], typeid(this).name())
 
-#define SESSIONS SessionManager::GetInstance()
-#define GQUEUEE GlobalQueue::GetInstance()
+#define SESSIONS	SessionManager::GetInstance()
+#define GQUEUE		GlobalQueue::GetInstance()
+
+#define SINGLETON(classname)							\
+private:												\
+	classname() { }										\
+	classname(const classname& ref) { }					\
+	classname& operator=(const classname& ref) { }		\
+	~classname() { }									\
+public:													\
+	static classname* GetInstance()						\
+	{													\
+		static classname instance;						\
+		return &instance;								\
+	}		
 
 #define CRASH(cause)						\
 {											\

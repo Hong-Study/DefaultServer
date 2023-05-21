@@ -21,17 +21,22 @@ void JobQueue::Excute()
 
 		while (true)
 		{
-			JobRef job = Pop();
-			if (job == nullptr)
+			vector<JobRef> jobs;
+			if (_queue.PopAll(jobs) == false)
 				break;
-			
-			job->Excute();
+
+			for (auto job : jobs)
+			{
+				job->Excute();
+			}
+
+			_insideQueue.fetch_sub(static_cast<int32>(jobs.size()));
 
 			int64 endTick = GetTickCount64();
-			
-			if (endTick - startTick > 1000)
+
+			if (endTick - startTick > WORK_TICK)
 			{
-				GQUEUEE->Push(shared_from_this());
+				GQUEUE->Push(shared_from_this());
 
 				break;
 			}

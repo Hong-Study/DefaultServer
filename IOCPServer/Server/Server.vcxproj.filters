@@ -7,6 +7,9 @@
     <Filter Include="Head">
       <UniqueIdentifier>{56666519-1819-4e7c-97b7-a37d99e70270}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{77c2225b-99bb-4b13-ba75-98ce682efce0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -22,6 +25,9 @@
     <ClCompile Include="ClinetSession.cpp">
       <Filter>Packet</Filter>
     </ClCompile>
+    <ClCompile Include="TestManager.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -35,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="ClinetSession.h">
       <Filter>Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="TestManager.h">
+      <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

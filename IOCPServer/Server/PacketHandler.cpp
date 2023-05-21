@@ -30,8 +30,9 @@ bool Handle_Echo_Test(PacketSessionRef& ref, Protocol::EchoTest pkt)
     Protocol::EchoTest test;
     test.set_id(pkt.id());
     test.set_txt(pkt.txt());
+    SendBufferRef sendBuf = PacketHandler::MakeSendBuffer(test);
 
-    ref->Send(PacketHandler::MakeSendBuffer(test));
+    Gtest->PushJob(&TestManager::Send, ref, sendBuf);
 
     return true;
 }

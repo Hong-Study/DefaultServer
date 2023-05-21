@@ -4,18 +4,9 @@
 
 class SessionManager
 {
-private:
-	SessionManager() { }
-	SessionManager(const SessionManager& ref) { }
-	SessionManager& operator=(const SessionManager& ref) { }
-	~SessionManager() { }
-public:
-	static SessionManager* GetInstance()
-	{
-		static SessionManager instacne;
-		return &instacne;
-	}
+	SINGLETON(SessionManager)
 
+public:
 	void PushSession(SessionRef ref)
 	{
 		WRITE_LOCK;

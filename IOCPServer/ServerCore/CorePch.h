@@ -31,5 +31,5 @@ using namespace std;
 #include "Session.h"
 
 #include "ThreadManager.h"
-#include "GlobalQueue.h";
+#include "GlobalQueue.h"
 #pragma comment(lib, "ws2_32.lib")

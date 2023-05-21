@@ -2,6 +2,7 @@
 #include "ThreadManager.h"
 #include "CoreTLS.h"
 #include "CoreGlobal.h"
+#include "JobQueue.h"
 
 /*------------------
 	ThreadManager
@@ -38,6 +39,24 @@ void ThreadManager::Join()
 			t.join();
 	}
 	_threads.clear();
+}
+
+void ThreadManager::DoGlobalQueue()
+{
+	int64 startTick = GetTickCount64();
+
+	while (true)
+	{
+		JobQueueRef jobQueue = GQUEUE->Pop();
+		if (jobQueue == nullptr)
+			break;
+		
+		jobQueue->Excute();
+
+		int64 endTick = GetTickCount64();
+		if (endTick - startTick > WORK_TICK)
+			break;
+	}
 }
 
 void ThreadManager::InitTLS()

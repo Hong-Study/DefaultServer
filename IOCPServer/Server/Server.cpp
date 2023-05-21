@@ -6,42 +6,37 @@
 #include <memory>
 #include <utility>
 
-class Test
+void DoWork(ServerServiceRef& service)
 {
-public:
-	void connect(int n) { }
-};
+	while (true)
+	{
+		service->GetIocpCore()->Dispatch(10);
 
-template<typename T, typename Ret, typename... Args>
-void Make(T* obj, std::function<void(T&, Args...)> memfunc, Args... args)
-{
-	memFunc(obj, std::forward<Args>(args)...);
+		GThreadManager->DoGlobalQueue();
+	}
 }
 
 int main()
 {
-	Test* test = new Test();
+	SocketUtils::Init();
+	PacketHandler::Init();
 
-	//Make(test, &Test::connect, 10);
+	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
+
+	service->Start();
+	for (int32 i = 0; i < 5; i++)
+	{
+		GThreadManager->Launch([&service]()
+			{
+				while (true)
+				{
+					DoWork(service);
+				}
+			});
+	}
+
+	GThreadManager->Join();
+
+	// 윈속 종료
+	SocketUtils::Clear();
 }
-	//SocketUtils::Init();
-	//PacketHandler::Init();
-
-	//ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
-
-	//service->Start();
-	//for (int32 i = 0; i < 5; i++)
-	//{
-	//	GThreadManager->Launch([=]()
-	//		{
-	//			while (true)
-	//			{
-	//				service->GetIocpCore()->Dispatch();
-	//			}
-	//		});
-	//}
-
-	//GThreadManager->Join();
-
-	//// 윈속 종료
-	//SocketUtils::Clear();

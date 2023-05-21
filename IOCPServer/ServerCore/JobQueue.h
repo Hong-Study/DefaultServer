@@ -12,8 +12,8 @@ public:
 	template<typename T, typename Ret, typename... Args>
 	Job(shared_ptr<T> obj, Ret(T::* memfunc)(Args...), Args... args) 
 	{  
-		_func = [obj, memfunc, args]() {
-			(obj->*memfunc)(std::forward<Args>(args)...);
+		_func = [obj, memfunc, args...]() {
+			(obj.get()->*memfunc)(args...);
 		};
 	}
 
@@ -29,25 +29,22 @@ public:
 	void PushJob(CallBack&& func)
 	{
 		JobRef job = make_shared<Job>(std::move(func));
-		_queue.Push(job);
+		Push(job);
 	}
 
 	template<typename T, typename Ret, typename... Args>
-	void PushJob(Ret(T::* memfunc)(Args...), Args... args)
+	void PushJob(Ret(T::*memFunc)(Args...), Args... args)
 	{
 		shared_ptr<T> ptr = static_pointer_cast<T>(shared_from_this());
-		JobRef ref = make_shared<Job>(ptr, memfunc, std::forward<Args>(args)...);
-		_queue.Push(ref);
+		JobRef job = make_shared<Job>(ptr, memFunc, std::forward<Args>(args)...);
+		Push(job);
 	}
-	
-	JobRef Pop()
-	{
-		return _queue.Pop();
-	}
+
+public:
+	void Excute();
 
 private:
 	void Push(JobRef job);
-	void Excute();
 
 private:
 	USE_LOCK;

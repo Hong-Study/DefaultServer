@@ -152,12 +152,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="TestManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClinetSession.h" />
     <ClInclude Include="PacketHandler.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProtoTest.pb.h" />
+    <ClInclude Include="TestManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

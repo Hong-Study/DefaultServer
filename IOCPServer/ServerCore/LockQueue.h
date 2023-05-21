@@ -27,7 +27,7 @@ public:
 		if (_queue.empty())
 			return false;
 
-		for (int i = 0; i < _queue.size; i++)
+		for (int i = 0; i < _queue.size(); i++)
 		{
 			datas.push_back(_queue.front());
 			_queue.pop();

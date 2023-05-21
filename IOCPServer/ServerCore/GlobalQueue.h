@@ -3,18 +3,9 @@
 
 class GlobalQueue
 {
-private:
-	GlobalQueue() { }
-	GlobalQueue(const GlobalQueue& ref) { }
-	GlobalQueue& operator=(const GlobalQueue& ref) { }
-	~GlobalQueue() { }
-public:
-	static GlobalQueue* GetInstance()
-	{
-		static GlobalQueue instance;
-		return &instance;
-	}
+	SINGLETON(GlobalQueue)
 
+public:
 	void Push(JobQueueRef ref)
 	{
 		WRITE_LOCK;

@@ -12,3 +12,4 @@
 #include "CorePch.h"
 #include "ProtoTest.pb.h"
 #include "PacketHandler.h"
+#include "TestManager.h"

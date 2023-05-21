@@ -16,9 +16,6 @@
       <Filter>Head</Filter>
     </ClCompile>
     <ClCompile Include="Server.cpp" />
-    <ClCompile Include="ProtoTest.pb.cc">
-      <Filter>Packet</Filter>
-    </ClCompile>
     <ClCompile Include="PacketHandler.cpp">
       <Filter>Packet</Filter>
     </ClCompile>
@@ -28,13 +25,13 @@
     <ClCompile Include="TestManager.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="Protocol.pb.cc">
+      <Filter>Packet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Head</Filter>
-    </ClInclude>
-    <ClInclude Include="ProtoTest.pb.h">
-      <Filter>Packet</Filter>
     </ClInclude>
     <ClInclude Include="PacketHandler.h">
       <Filter>Packet</Filter>
@@ -44,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="TestManager.h">
       <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.pb.h">
+      <Filter>Packet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

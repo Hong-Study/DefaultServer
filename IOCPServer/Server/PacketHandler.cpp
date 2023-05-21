@@ -26,7 +26,7 @@ SendBufferRef PacketHandler::MakeSendBuffer(Protocol::EchoTest pkt)
 bool Handle_Echo_Test(PacketSessionRef& ref, Protocol::EchoTest pkt)
 {
     cout << pkt.id() << " " << pkt.txt() << endl;
-
+    
     Protocol::EchoTest test;
     test.set_id(pkt.id());
     test.set_txt(pkt.txt());

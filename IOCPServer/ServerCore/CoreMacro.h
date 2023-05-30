@@ -11,6 +11,7 @@
 
 #define SESSIONS	SessionManager::GetInstance()
 #define GQUEUE		GlobalQueue::GetInstance()
+#define TIME		TimeManager::GetInstance()
 
 #define SINGLETON(classname)							\
 private:												\

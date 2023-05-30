@@ -1,9 +1,13 @@
 #pragma once
 
+#define WIN32_LEAN_AND_MEAN
+
 #include "Types.h"
 #include "CoreMacro.h"
 #include "CoreTLS.h"
 #include "CoreGlobal.h"
+#include "tinyxml2.h"
+//#include "SimpleMath.h" 알아서 사용할 것
 
 #include <vector>
 #include <list>

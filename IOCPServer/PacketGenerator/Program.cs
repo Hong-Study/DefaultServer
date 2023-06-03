@@ -11,7 +11,6 @@ namespace PacketGenerator
         static string serverHandler = "";
         static string serverInit = "";
         static string serverMake = "";
-        
 
         static void Main()
         {
@@ -43,12 +42,20 @@ namespace PacketGenerator
                     continue;
                 Console.WriteLine(names[0]);
 
+                // 핸들러 코드 추가
                 serverHandler += string.Format(PacketFormat.handlerFormat, names[0]);
+                
+                // 초기화 코드 추가
                 serverInit += string.Format(PacketFormat.initFormat, names[0]);
+                
+                // 생성 코드 (MakeSendBuffer) 추가
                 serverMake += string.Format(PacketFormat.makeFormat, names[0]);
             }
+            // 총 전체 코드로 합치기
             string serverManagerText = string.Format(PacketFormat.managerFormat, serverHandler, serverInit, serverMake);
             File.WriteAllText("PacketHandler.h", serverManagerText);
+            
+            // 만들어진 파일을 IOCP 서버로 옮기는 코드
             System.IO.File.Copy("PacketHandler.h", destPath, true);
         }
     }

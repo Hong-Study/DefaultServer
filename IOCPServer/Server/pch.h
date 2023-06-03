@@ -11,6 +11,7 @@
 #endif
 
 #include "CorePch.h"
+#include "Enum.pb.h"
 #include "Protocol.pb.h"
 #include "PacketHandler.h"
 #include "TestManager.h"

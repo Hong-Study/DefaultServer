@@ -4,7 +4,7 @@
 void ClinetSession::OnConnected()
 {
 	cout << "OnConnect" << endl;
-	Protocol::EchoTest test;
+	Protocol::S_ECHO test;
 	test.set_id(10);
 	test.set_txt("Hello World");
 	SendBufferRef ref = PacketHandler::MakeSendBuffer(test);

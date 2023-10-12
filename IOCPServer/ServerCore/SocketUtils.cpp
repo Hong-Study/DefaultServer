@@ -14,7 +14,7 @@ void SocketUtils::Init()
 	WSADATA wsaData;
 	assert(::WSAStartup(MAKEWORD(2, 2), OUT &wsaData) == 0);
 	
-	/* ·±Å¸ÀÓ¿¡ ÁÖ¼Ò ¾ò¾î¿À´Â API */
+	/* í•¨ìˆ˜ ìœ„ì¹˜ ì–»ì–´ì˜¤ëŠ” ê²ƒ API */
 	SOCKET dummySocket = CreateSocket();
 	assert(BindWindowsFunction(dummySocket, WSAID_CONNECTEX, reinterpret_cast<LPVOID*>(&ConnectEx)));
 	assert(BindWindowsFunction(dummySocket, WSAID_DISCONNECTEX, reinterpret_cast<LPVOID*>(&DisconnectEx)));

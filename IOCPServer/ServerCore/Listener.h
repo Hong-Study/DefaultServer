@@ -17,7 +17,7 @@ private:
 	void ProcessAccept(AcceptEvent* event);
 
 private:
-	/* ¿Œ≈Õ∆‰¿ÃΩ∫ ±∏«ˆ */
+	/* Handle Î∞è Accept Ïã§Ìñâ */
 	virtual HANDLE		GetHandle() override;
 	virtual void		Dispatch(class IocpEvent* iocpEvent, int32 numOfBytes = 0) override;
 

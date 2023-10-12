@@ -1,0 +1,16 @@
+syntax = "proto3";
+package Protocol;
+
+import "Enum.proto";
+
+message S_ECHO
+{
+	int64 id = 1;
+	string txt = 2;
+}
+
+message C_ECHO
+{
+	int64 id = 1;
+	string txt = 2;
+}

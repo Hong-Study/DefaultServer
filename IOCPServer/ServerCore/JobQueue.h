@@ -26,24 +26,36 @@ private:
 class JobQueue : public enable_shared_from_this<JobQueue>
 {
 public:
-	void PushJob(CallBack&& func)
+	void DoAsync(CallBack&& func)
 	{
 		JobRef job = make_shared<Job>(std::move(func));
 		Push(job);
 	}
 
 	template<typename T, typename Ret, typename... Args>
-	void PushJob(Ret(T::*memFunc)(Args...), Args... args)
+	void DoAsync(Ret(T::*memFunc)(Args...), Args... args)
 	{
 		shared_ptr<T> ptr = static_pointer_cast<T>(shared_from_this());
 		JobRef job = make_shared<Job>(ptr, memFunc, std::forward<Args>(args)...);
 		Push(job);
 	}
 
+	/*void DoTimer(CallBack&& func, uint64 time)
+	{
+		JobRef job = make_shared<Job>(std::move(func));
+		JobTimeRef jobTime = make_shared<JobTimer>(job, time);
+	}
+
+	template<typename T, typename Ret, typename... Args>
+	void DoTimer(Ret(T::* memFunc)(Args...), Args... args)
+	{
+		shared_ptr<T> ptr = static_pointer_cast<T>(shared_from_this());
+		JobRef job = make_shared<Job>(ptr, memFunc, std::forward<Args>(args)...);
+		JobTimeRef jobTime = make_shared<JobTimer>(job, time);
+	}*/
+
 public:
 	void Excute();
-
-private:
 	void Push(JobRef job);
 
 private:

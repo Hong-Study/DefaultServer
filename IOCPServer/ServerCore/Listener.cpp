@@ -62,7 +62,7 @@ void Listener::RegisterAccept(AcceptEvent* event)
 		{
 			RegisterAccept(event);
 			
-			// 추가적으로 예외 처리 가능
+			// TODO
 		}
 	}
 }

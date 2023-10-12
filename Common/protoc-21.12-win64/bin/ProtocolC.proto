@@ -1,0 +1,16 @@
+syntax = "proto3";
+package Protocol;
+
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+enum INGAME
+{
+	NULL = 0;
+	ECHO = 1;
+}
+
+message EchoTest
+{
+	int64 id = 1;
+	string txt = 2;
+}

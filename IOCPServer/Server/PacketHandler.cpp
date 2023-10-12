@@ -13,7 +13,5 @@ bool Handle_ECHO(PacketSessionRef& ref, Protocol::C_ECHO pkt)
     test.set_txt(pkt.txt());
     SendBufferRef sendBuf = PacketHandler::MakeSendBuffer(test);
 
-    Gtest->PushJob(&TestManager::Send, ref, sendBuf);
-
     return true;
 }

@@ -45,6 +45,7 @@ public:													\
 }
 
 using JobRef = std::shared_ptr<class Job>;
+using JobTimeRef = std::shared_ptr<class JobTimer>;
 using JobQueueRef = std::shared_ptr<class JobQueue>;
 
 using IocpObjectRef = std::shared_ptr<class IocpObject>;

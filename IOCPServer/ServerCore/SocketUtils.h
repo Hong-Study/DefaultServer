@@ -16,24 +16,24 @@ public:
 	static void Init();
 	static void Clear();
 
-	// Ex ÇÔ¼öµé ÃÊ±âÈ­ ÇÏ´Â ÇÔ¼ö
+	// Ex í•¨ìˆ˜ë“¤ ì´ˆê¸°í™” í•˜ëŠ” í•¨ìˆ˜
 	static bool BindWindowsFunction(SOCKET socket, GUID guid, LPVOID* fn);
 	static SOCKET CreateSocket();
 
-	// Close µÇ¾úÀ» ¶§, ¼ÒÄÏ ¹öÆÛ¿¡ ³²¾ÆÀÖ´Â µ¥ÀÌÅÍ¸¦ ¾î¶»°Ô ÇÒ °ÍÀÎÁö °áÁ¤
+	// Close ë˜ì—ˆì„ ë•Œ, ì†Œì¼“ ë²„í¼ì— ë‚¨ì•„ìˆëŠ” ë°ì´í„°ë¥¼ ì–´ë–»ê²Œ í•  ê²ƒì¸ì§€ ê²°ì •
 	static bool SetLinger(SOCKET socket, uint16 onoff, uint16 linger);
 	
-	// Ä¿³ÎÀÌ bind Á¤º¸¸¦ µé°í ÀÖÀ» ¶§, Àç »ç¿ëÀÌ °¡´ÉÇÏµµ·Ï ÇÑ´Ù.
+	// ì»¤ë„ì´ bind ì •ë³´ë¥¼ ë“¤ê³  ìˆì„ ë•Œ, ì¬ ì‚¬ìš©ì´ ê°€ëŠ¥í•˜ë„ë¡ í•œë‹¤.
 	static bool SetReuseAddress(SOCKET socket, bool flag);
 	
-	// Send, Recv ¹öÆÛ Å©±â ÁöÁ¤
+	// Send, Recv ë²„í¼ í¬ê¸° ì§€ì •
 	static bool SetRecvBufferSize(SOCKET socket, int32 size);
 	static bool SetSendBufferSize(SOCKET socket, int32 size);
 
-	// Nagle ¾Ë°í¸®Áò -> ÀÛÀº µ¥ÀÌÅÍµéÀ» ¸ğ¾Æ¼­ ÇÑ¹ø¿¡ º¸³»´Â ¾Ë°í¸®Áò( ²¯´Ù ÄÑ±â )
+	// Nagle ì•Œê³ ë¦¬ì¦˜ -> ì‘ì€ ë°ì´í„°ë“¤ì„ ëª¨ì•„ì„œ í•œë²ˆì— ë³´ë‚´ëŠ” ì•Œê³ ë¦¬ì¦˜( ê»ë‹¤ ì¼œê¸° )
 	static bool SetTcpNoDelay(SOCKET socket, bool flag);
 
-	// ListenSocketÀÇ Æ¯¼ºÀ» ClientSocket¿¡ ±×´ë·Î Àû¿ë
+	// ListenSocketì˜ íŠ¹ì„±ì„ ClientSocketì— ê·¸ëŒ€ë¡œ ì ìš©
 	static bool SetUpdateAcceptSocket(SOCKET socket, SOCKET listenSocket);
 	
 	static bool Bind(SOCKET socket, NetAddress netAddr);

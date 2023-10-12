@@ -184,7 +184,7 @@ void Session::RegisterSend()
 			CRASH(errorCode);
 			_sendEvent._owner = nullptr;
 
-			// Send Vector¿¡ ÀÖ´ø Á¤º¸¸¦ ´Ù½Ã ¿Å°Ü¾ß ÇÒ±î?
+			// Send Vectorï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Å°Ü¾ï¿½ ï¿½Ò±ï¿½?
 
 			_sendVector.clear();
 			_isSend.store(false);
@@ -222,7 +222,7 @@ void Session::RegisterSend()
 			CRASH(errorCode);
 			_sendEvent._owner = nullptr;
 
-			// Send Vector¿¡ ÀÖ´ø Á¤º¸¸¦ ´Ù½Ã ¿Å°Ü¾ß ÇÒ±î?
+			// Send Vector
 
 			_sendVector.clear();
 			_isSend.store(false);
@@ -277,9 +277,8 @@ bool Session::RegisterConnect()
 	_connectEvent._owner = shared_from_this();
 
 	DWORD numOfBytes = 0;
-	// µû·Î ¸¸µå´Â ÀÌÀ¯´Â? Á¤º¸¸¦ µé°í°¡±â ¶§¹®¿¡?
 	SOCKADDR_IN sockAddr = GetNetAddress().GetSockAddr();
-	if (SOCKET_ERROR == SocketUtils::ConnectEx(_socket, reinterpret_cast<SOCKADDR*>(&sockAddr), sizeof(sockAddr), /*Á¢¼Ó ÈÄ Àü¼ÛÇÒ µ¥ÀÌÅÍ ÀÖÀ¸¸é »ç¿ë(buf)*/nullptr, /*Á¢¼Ó ÈÄ Àü¼ÛÇÒ µ¥ÀÌÅÍ ÀÖÀ¸¸é »ç¿ë(len)*/0, &numOfBytes, &_connectEvent))
+	if (SOCKET_ERROR == SocketUtils::ConnectEx(_socket, reinterpret_cast<SOCKADDR*>(&sockAddr), sizeof(sockAddr), /*ì ‘ì† í›„ ì „ì†¡í•  ë°ì´í„° ìˆìœ¼ë©´ ì‚¬ìš©(buf)*/nullptr, /*ì ‘ì† í›„ ì „ì†¡í•  ë°ì´í„° ìˆìœ¼ë©´ ì‚¬ìš©(len)*/0, &numOfBytes, &_connectEvent))
 	{
 		int32 errorCode = ::WSAGetLastError();
 		if (errorCode != WSA_IO_PENDING)

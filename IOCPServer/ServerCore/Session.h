@@ -26,7 +26,7 @@ public:
 	virtual ~Session();
 
 public:
-	/* ¿ÜºÎ¿¡¼­ »ç¿ë */
+	/* ì™¸ë¶€ì—ì„œ ì‚¬ìš© */
 	void				Send(SendBufferRef sendBuffer);
 	bool				Connect();
 	void				Disconnect(const WCHAR* cause);
@@ -35,7 +35,7 @@ public:
 	void				SetService(shared_ptr<Service> service) { _service = service; }
 
 public:
-	/* Á¤º¸ °ü·Ã */
+	/* ì •ë³´ ê´€ë ¨ */
 	void				SetNetAddress(NetAddress address) { _netAddress = address; }
 	NetAddress			GetNetAddress() { return _netAddress; }
 	SOCKET				GetSocket() { return _socket; }
@@ -43,12 +43,12 @@ public:
 	SessionRef			GetSessionRef() { return static_pointer_cast<Session>(shared_from_this()); }
 
 private:
-	/* ÀÎÅÍÆäÀÌ½º ±¸Çö */
+	/* ì¸í„°í˜ì´ìŠ¤ êµ¬í˜„ */
 	virtual HANDLE		GetHandle() override;
 	virtual void		Dispatch(class IocpEvent* iocpEvent, int32 numOfBytes = 0) override;
 
 private:
-	/* Àü¼Û °ü·Ã */
+	/* ì „ì†¡ ê´€ë ¨ */
 	bool				RegisterConnect();
 	bool				RegisterDisconnect();
 	void				RegisterRecv();
@@ -60,7 +60,7 @@ private:
 	void				ProcessSend(int32 numOfBytes);
 
 protected:
-	/* ÄÁÅÙÃ÷ ÄÚµå¿¡¼­ ÀçÁ¤ÀÇ */
+	/* ì»¨í…ì¸  ì½”ë“œì—ì„œ ì¬ì •ì˜ */
 	virtual void		OnConnected() { }
 	virtual int32		OnRecv(BYTE* buffer, int32 len) { return len; }
 	virtual void		OnSend(int32 len) { }
@@ -79,10 +79,10 @@ private:
 	queue<SendBufferRef>	_sendQueue;
 	atomic<bool>			_isSend = false;
 
-	// µ¥ÀÌÅÍ¸¦ Send ÇÒ ¶§, ±× Á¤º¸µéÀ» ÀúÀåÇÏ´Â º¤ÅÍ
+	// ë°ì´í„°ë¥¼ Send í•  ë•Œ, ê·¸ ì •ë³´ë“¤ì„ ì €ì¥í•˜ëŠ” ë²¡í„°
 	vector<SendBufferRef>	_sendVector;
 private:
-	/* IocpEvent Àç»ç¿ë */
+	/* IocpEvent ì¬ì‚¬ìš© */
 	ConnectEvent		_connectEvent;
 	DisconnectEvent		_disconnectEvent;
 	RecvEvent			_recvEvent;

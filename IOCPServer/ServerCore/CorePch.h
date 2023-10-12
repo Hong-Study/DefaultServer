@@ -7,7 +7,7 @@
 #include "CoreTLS.h"
 #include "CoreGlobal.h"
 #include "tinyxml2.h"
-//#include "SimpleMath.h" 알아서 사용할 것
+//#include "SimpleMath.h"
 
 #include <vector>
 #include <list>

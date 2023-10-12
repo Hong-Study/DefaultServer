@@ -1,6 +1,7 @@
 # DefaultServer
 ### 제작 이유
 - 스마일게이트에서 팀 프로젝트를 진행하면서 부족했던 점을 보완하기 위해 제작하였습니다.
+  
 [스일게이트 팀 프로젝트](https://github.com/Hong-Study/bluebird/tree/main/src)
 - 추가적으로 서버 공부를 위해서 제작하였습니다.
 

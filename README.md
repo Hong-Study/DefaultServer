@@ -29,15 +29,63 @@
 - C# 으로 제작된 PacketHandler.h 자동 구현 툴
 - Enum.proto의 enum INGAME을 읽어서 Client용 PacketHandler와 Server용 PacketHandler를 자동으로 구현해줍니다.
 
-## 사용 방식
-1. ServerService 를 통해, Session 형태와 NetAddress 를 집어넣음
-ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
-
+### 실행 방식
+1. ServerService 를 통해, Session 형태와 NetAddress 를 집어넣음 
+```ServerServiceRef service = make_shared(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared));```
 2. service->Start() 실행
 3. 스레드를 만들어 service->GetIocpCore()->Dispatch() 실행, 단 시간 초를 정하고 싶으면 Dispatch의 인자로 넘겨주면 됨.
 4. GThreadManager->Join(); 을 통해 대기
+```
+void DoWork(ServerServiceRef& service)
+{
+	while (true)
+	{
+		service->GetIocpCore()->Dispatch(10);
+
+		GThreadManager->DoGlobalQueue();
+	}
+}
+
+int main()
+{
+	SocketUtils::Init();
+	PacketHandler::Init();
+
+	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
+
+	service->Start();
+	for (int32 i = 0; i < 5; i++)
+	{
+		GThreadManager->Launch([&service]()
+			{
+				while (true)
+				{
+					DoWork(service);
+				}
+			});
+	}
+
+	GThreadManager->Join();
+
+	// 윈속 종료
+	SocketUtils::Clear();
+}
+```
+
 5. Recv를 받으면 PacketHandler를 통해 타입에 맞는 함수 실행
-6. 단, Protocolbuffer에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함. ( 자세한 코드는 PacketHandler안에 존재)
+단, Protocolbuffer에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함.
+
+```
+void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
+{
+	PacketSessionRef ref = GetPacketSessionRef();
+
+	if (PacketHandler::PakcetHandle(ref, buffer, len) == false)
+		cout << "Recv Failed" << endl;
+
+}
+```
+
 7. SessionManager가 구현되어 있으며, 싱글톤으로 존재. manager를 통해 BoradCasting 가능
 
 ### 추후 구현할 기능들

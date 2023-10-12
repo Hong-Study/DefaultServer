@@ -45,6 +45,7 @@ enum INGAME
 	START = 2;
 }
 ```
+※ Protocol.proto가 자동으로 빌드되어 파일로 만들어지길 원한다면 빌드전이벤트에 [GenPackets.bat](Common/protoc-21.12-win64/bin/GenPackets.bat) 실행하도록 할 것
 
 ### 실행 방식
 1. ServerService 를 통해, Session 형태와 NetAddress 를 집어넣음 
@@ -91,8 +92,7 @@ int main()
 ```
 
 5. Recv를 받으면 PacketHandler를 통해 타입에 맞는 함수 실행
-단, Protocolbuffer에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함.
-[Protobuf-Enum.proto](https://github.com/Hong-Study/DefaultServer/tree/main/Common/protoc-21.12-win64/bin)
+단, Protocol.proto 에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함.
 ```
 void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 {

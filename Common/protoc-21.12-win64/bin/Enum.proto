@@ -6,26 +6,4 @@ enum INGAME
 	INSIDE = 0;
 	OUTSIDE = 1;
 	START = 2;
-	ORDER = 3;
-	DICE = 4;
-	MOVE = 5;
-	NEXT_TURN = 6;
-	QUIZ = 7;
-	GOLD_KEY = 8;
-	END = 9;
-}
-
-enum QUIZ_LEVEL
-{
-	HIGH = 0;
-	MIDDLE = 1;
-	ROW = 2;
-	FAILED = 3;
-}
-
-enum NEXT_TYPE
-{
-	TYPE_QUIZ = 0;
-	TYPE_GOLDKEY = 1;
-	TYPE_NEXT = 2;
 }

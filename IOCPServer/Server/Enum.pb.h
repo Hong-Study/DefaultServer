@@ -48,14 +48,15 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace Protocol {
 
 enum INGAME : int {
-  NULL_ = 0,
-  ECHO = 1,
+  INSIDE = 0,
+  OUTSIDE = 1,
+  START = 2,
   INGAME_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   INGAME_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool INGAME_IsValid(int value);
-constexpr INGAME INGAME_MIN = NULL_;
-constexpr INGAME INGAME_MAX = ECHO;
+constexpr INGAME INGAME_MIN = INSIDE;
+constexpr INGAME INGAME_MAX = START;
 constexpr int INGAME_ARRAYSIZE = INGAME_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* INGAME_descriptor();

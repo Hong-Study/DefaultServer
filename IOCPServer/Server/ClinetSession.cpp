@@ -3,14 +3,7 @@
 
 void ClinetSession::OnConnected()
 {
-	cout << "OnConnect" << endl;
-	Protocol::S_ECHO test;
-	test.set_id(10);
-	test.set_txt("Hello World");
-	SendBufferRef ref = PacketHandler::MakeSendBuffer(test);
 
-	//this_thread::sleep_for(1ms);
-	Send(ref);
 }
 
 void ClinetSession::OnDisconnected()

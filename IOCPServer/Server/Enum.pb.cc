@@ -29,12 +29,12 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_Enum_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\nEnum.proto\022\010Protocol*\034\n\006INGAME\022\010\n\004NULL"
-  "\020\000\022\010\n\004ECHO\020\001b\006proto3"
+  "\n\nEnum.proto\022\010Protocol*,\n\006INGAME\022\n\n\006INSI"
+  "DE\020\000\022\013\n\007OUTSIDE\020\001\022\t\n\005START\020\002b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_Enum_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_Enum_2eproto = {
-    false, false, 60, descriptor_table_protodef_Enum_2eproto,
+    false, false, 76, descriptor_table_protodef_Enum_2eproto,
     "Enum.proto",
     &descriptor_table_Enum_2eproto_once, nullptr, 0, 0,
     schemas, file_default_instances, TableStruct_Enum_2eproto::offsets,
@@ -56,6 +56,7 @@ bool INGAME_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;

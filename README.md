@@ -28,6 +28,23 @@
 ### PacketGenerator
 - C# 으로 제작된 PacketHandler.h 자동 구현 툴
 - Enum.proto의 enum INGAME을 읽어서 Client용 PacketHandler와 Server용 PacketHandler를 자동으로 구현해줍니다.
+```
+static void Main()
+{
+	//MakeProto(); // Enum.proto 를 토대로 Protocol.proto를 구현해줌
+	MakeHandle(); // Enum.Proto를 토대로 PacketHandler 구현
+}
+```
+
+[Enum.proto](Common/protoc-21.12-win64/bin/Enum.proto) 형식
+```
+enum INGAME
+{
+	INSIDE = 0;
+	OUTSIDE = 1;
+	START = 2;
+}
+```
 
 ### 실행 방식
 1. ServerService 를 통해, Session 형태와 NetAddress 를 집어넣음 
@@ -51,7 +68,8 @@ int main()
 	SocketUtils::Init();
 	PacketHandler::Init();
 
-	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared<ClinetSession>));
+	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 7777)
+	, 10, std::function<SessionRef()>(make_shared<ClinetSession>));
 
 	service->Start();
 	for (int32 i = 0; i < 5; i++)
@@ -74,7 +92,7 @@ int main()
 
 5. Recv를 받으면 PacketHandler를 통해 타입에 맞는 함수 실행
 단, Protocolbuffer에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함.
-
+[Protobuf-Enum.proto](https://github.com/Hong-Study/DefaultServer/tree/main/Common/protoc-21.12-win64/bin)
 ```
 void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 {
@@ -82,15 +100,13 @@ void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 
 	if (PacketHandler::PakcetHandle(ref, buffer, len) == false)
 		cout << "Recv Failed" << endl;
-
 }
 ```
 
-7. SessionManager가 구현되어 있으며, 싱글톤으로 존재. manager를 통해 BoradCasting 가능
+6. SessionManager가 구현되어 있으며, 싱글톤으로 존재. manager를 통해 BoradCasting 가능
 
 ### 추후 구현할 기능들
 - 특수한 Memory 구현은 아직 미구현 상태, 추후에 할 예정 (Memory Pool, shared_ptr Custom)
-
 - JobQueue는 구현되어 있으나 JobQueue에 특정 시간을 넣는 기능 미구현, 구현할 예정
 
 ---
@@ -98,4 +114,4 @@ void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 ## 용도
 - IOCP를 사용할 필요가 없을 정도로 작은 규모에서 사용하기 위해 제작
 - 아직 에코 테스트 정도만 하고, 실제 데이터는 테스트 X
-- 현재 에트리에서 적용했던 내용으로 리팩토링 예정
+- 현재 에트리에서 했던 것을 토대로 리팩토링 예정

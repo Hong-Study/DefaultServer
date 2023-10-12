@@ -7,15 +7,19 @@ extern map<uint16, handleFunction> _packetHandler;
 template<typename PacketData, typename handleFunc>
 inline bool ParsingPacket(handleFunc func, PacketSessionRef& ref, BYTE* buffer, uint16 len);
 
-bool Handle_ECHO(PacketSessionRef& ref, Protocol::C_ECHO pkt);
+bool Handle_INSIDE(PacketSessionRef& ref, Protocol::C_INSIDE pkt);
+bool Handle_OUTSIDE(PacketSessionRef& ref, Protocol::C_OUTSIDE pkt);
+bool Handle_START(PacketSessionRef& ref, Protocol::C_START pkt);
 
 class PacketHandler
 {
 public:
 	static void Init()
 	{
-		_packetHandler[Protocol::INGAME::ECHO] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) { return ParsingPacket<Protocol::C_ECHO>(Handle_ECHO, ref, buf, size); };
-
+		_packetHandler[Protocol::INGAME::INSIDE] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) { return ParsingPacket<Protocol::C_INSIDE>(Handle_INSIDE, ref, buf, size); };
+		_packetHandler[Protocol::INGAME::OUTSIDE] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) { return ParsingPacket<Protocol::C_OUTSIDE>(Handle_OUTSIDE, ref, buf, size); };
+		_packetHandler[Protocol::INGAME::START] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) { return ParsingPacket<Protocol::C_START>(Handle_START, ref, buf, size); };
+		
 	}
 	static bool PakcetHandle(PacketSessionRef& session, BYTE* buffer, int32 len)
 	{
@@ -27,8 +31,10 @@ public:
 	}
 
 public:
-	static SendBufferRef MakeSendBuffer(Protocol::S_ECHO pkt) { return _MakeSendBuffer(pkt, Protocol::INGAME::ECHO); }
-
+	static SendBufferRef MakeSendBuffer(Protocol::S_INSIDE pkt) { return _MakeSendBuffer(pkt, Protocol::INGAME::INSIDE); }
+	static SendBufferRef MakeSendBuffer(Protocol::S_OUTSIDE pkt) { return _MakeSendBuffer(pkt, Protocol::INGAME::OUTSIDE); }
+	static SendBufferRef MakeSendBuffer(Protocol::S_START pkt) { return _MakeSendBuffer(pkt, Protocol::INGAME::START); }
+	
 
 	template<typename PacketData, typename PacketType>
 	static SendBufferRef _MakeSendBuffer(PacketData& pkt, PacketType type);

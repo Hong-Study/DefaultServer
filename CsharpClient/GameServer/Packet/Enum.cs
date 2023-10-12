@@ -24,8 +24,8 @@ namespace Protocol {
     static EnumReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgpFbnVtLnByb3RvEghQcm90b2NvbCocCgZJTkdBTUUSCAoETlVMTBAAEggK",
-            "BEVDSE8QAWIGcHJvdG8z"));
+            "CgpFbnVtLnByb3RvEghQcm90b2NvbCosCgZJTkdBTUUSCgoGSU5TSURFEAAS",
+            "CwoHT1VUU0lERRABEgkKBVNUQVJUEAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.INGAME), }, null, null));
@@ -35,8 +35,9 @@ namespace Protocol {
   }
   #region Enums
   public enum INGAME {
-    [pbr::OriginalName("NULL")] Null = 0,
-    [pbr::OriginalName("ECHO")] Echo = 1,
+    [pbr::OriginalName("INSIDE")] Inside = 0,
+    [pbr::OriginalName("OUTSIDE")] Outside = 1,
+    [pbr::OriginalName("START")] Start = 2,
   }
 
   #endregion

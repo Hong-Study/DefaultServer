@@ -3,14 +3,34 @@ package Protocol;
 
 import "Enum.proto";
 
-message S_ECHO
+message S_INSIDE
 {
-	int64 id = 1;
-	string txt = 2;
+
 }
 
-message C_ECHO
+message C_INSIDE
 {
-	int64 id = 1;
-	string txt = 2;
+
 }
+
+message S_OUTSIDE
+{
+
+}
+
+message C_OUTSIDE
+{
+
+}
+
+message S_START
+{
+
+}
+
+message C_START
+{
+
+}
+
+

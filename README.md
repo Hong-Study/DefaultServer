@@ -24,6 +24,8 @@
 
 ---
 # C++ IOCP Server
+- C++ 17으로 제작
+
 ### 용도
 - IOCP Server를 위해 사용
 

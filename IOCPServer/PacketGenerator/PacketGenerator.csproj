@@ -10,4 +10,14 @@
     <BaseOutputPath></BaseOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Templates\ClientPacketHandler.cs" />
+    <Compile Remove="Templates\PacketHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Templates\ClientPacketHandler.cs" />
+    <None Include="Templates\PacketHandler.cs" />
+  </ItemGroup>
+
 </Project>

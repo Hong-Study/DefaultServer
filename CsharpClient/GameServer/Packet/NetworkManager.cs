@@ -1,6 +1,7 @@
 ﻿using GameServer.ServerCore;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace GameServer.Packet
 
         public void Connect()
         {
-            PacketManager.Instance.CustomHandle = new Action<ushort, IMessage>(RecvPacketQueue.Instance.PushBack);
+            PacketHandler.Instance.CustomHandle = new Action<ushort, IMessage>(RecvPacketQueue.Instance.PushBack);
             session.Start(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 7777));
         }
         public void Send(IMessage message, INGAME type)
@@ -37,7 +38,7 @@ namespace GameServer.Packet
             foreach(Tuple<UInt16, IMessage> value in values)
             {
                 Action<IMessage> action = null;
-                action = PacketManager.Instance.GetPakcetHandler(value.Item1);
+                action = PacketHandler.Instance.GetPakcetHandler(value.Item1);
                 if (action != null)
                 {
                     action.Invoke(value.Item2);

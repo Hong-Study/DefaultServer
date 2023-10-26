@@ -41,6 +41,7 @@ public:
 	static bool BindAnyAddress(SOCKET socket, uint16 port);
 	static bool Listen(SOCKET socket, int32 backlog = SOMAXCONN);
 	static void Close(SOCKET& socket);
+	static string GetHostDomainbyIp(string domain);
 };
 
 template<typename T>

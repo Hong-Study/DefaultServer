@@ -26,6 +26,7 @@ namespace GameServer.ServerCore
         {
             {0}
         }
+
         public void ParsingPacket(ArraySegment<byte> buffer, PacketHeader head)
         {
             UInt16 id = head.type;

@@ -74,14 +74,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packet\ClientPacketHandler.cs" />
+    <Compile Include="Packet\Enum.cs" />
     <Compile Include="Packet\NetworkManager.cs" />
     <Compile Include="Packet\PacketHandler.cs" />
-    <Compile Include="Packet\ProtoTestC.cs" />
+    <Compile Include="Packet\ProtocolC.cs" />
     <Compile Include="Packet\RecvPacketQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Packet\ClientSession.cs" />
-    <Compile Include="Packet\PacketManager.cs" />
     <Compile Include="ServerCore\RecvBuffer.cs" />
     <Compile Include="ServerCore\Session.cs" />
   </ItemGroup>

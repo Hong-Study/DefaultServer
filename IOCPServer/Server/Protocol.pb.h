@@ -23,7 +23,6 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
-#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -79,9 +78,10 @@ namespace Protocol {
 // ===================================================================
 
 class S_INSIDE final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.S_INSIDE) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_INSIDE) */ {
  public:
   inline S_INSIDE() : S_INSIDE(nullptr) {}
+  ~S_INSIDE() override;
   explicit PROTOBUF_CONSTEXPR S_INSIDE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   S_INSIDE(const S_INSIDE& from);
@@ -154,15 +154,29 @@ class S_INSIDE final :
   S_INSIDE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<S_INSIDE>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const S_INSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_INSIDE& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const S_INSIDE& from) {
+    S_INSIDE::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const S_INSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_INSIDE* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -183,6 +197,48 @@ class S_INSIDE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+    kYawFieldNumber = 4,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
+  // int32 y = 2;
+  void clear_y();
+  int32_t y() const;
+  void set_y(int32_t value);
+  private:
+  int32_t _internal_y() const;
+  void _internal_set_y(int32_t value);
+  public:
+
+  // int32 z = 3;
+  void clear_z();
+  int32_t z() const;
+  void set_z(int32_t value);
+  private:
+  int32_t _internal_z() const;
+  void _internal_set_z(int32_t value);
+  public:
+
+  // int32 yaw = 4;
+  void clear_yaw();
+  int32_t yaw() const;
+  void set_yaw(int32_t value);
+  private:
+  int32_t _internal_yaw() const;
+  void _internal_set_yaw(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_INSIDE)
  private:
   class _Internal;
@@ -191,15 +247,22 @@ class S_INSIDE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    int32_t y_;
+    int32_t z_;
+    int32_t yaw_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
 class C_INSIDE final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.C_INSIDE) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_INSIDE) */ {
  public:
   inline C_INSIDE() : C_INSIDE(nullptr) {}
+  ~C_INSIDE() override;
   explicit PROTOBUF_CONSTEXPR C_INSIDE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   C_INSIDE(const C_INSIDE& from);
@@ -272,15 +335,29 @@ class C_INSIDE final :
   C_INSIDE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<C_INSIDE>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_INSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_INSIDE& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const C_INSIDE& from) {
+    C_INSIDE::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_INSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_INSIDE* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -301,6 +378,48 @@ class C_INSIDE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+    kYawFieldNumber = 4,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
+  // int32 y = 2;
+  void clear_y();
+  int32_t y() const;
+  void set_y(int32_t value);
+  private:
+  int32_t _internal_y() const;
+  void _internal_set_y(int32_t value);
+  public:
+
+  // int32 z = 3;
+  void clear_z();
+  int32_t z() const;
+  void set_z(int32_t value);
+  private:
+  int32_t _internal_z() const;
+  void _internal_set_z(int32_t value);
+  public:
+
+  // int32 yaw = 4;
+  void clear_yaw();
+  int32_t yaw() const;
+  void set_yaw(int32_t value);
+  private:
+  int32_t _internal_yaw() const;
+  void _internal_set_yaw(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.C_INSIDE)
  private:
   class _Internal;
@@ -309,15 +428,22 @@ class C_INSIDE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    int32_t y_;
+    int32_t z_;
+    int32_t yaw_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
 class S_OUTSIDE final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.S_OUTSIDE) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_OUTSIDE) */ {
  public:
   inline S_OUTSIDE() : S_OUTSIDE(nullptr) {}
+  ~S_OUTSIDE() override;
   explicit PROTOBUF_CONSTEXPR S_OUTSIDE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   S_OUTSIDE(const S_OUTSIDE& from);
@@ -390,15 +516,29 @@ class S_OUTSIDE final :
   S_OUTSIDE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<S_OUTSIDE>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const S_OUTSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_OUTSIDE& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const S_OUTSIDE& from) {
+    S_OUTSIDE::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const S_OUTSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_OUTSIDE* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -419,6 +559,18 @@ class S_OUTSIDE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_OUTSIDE)
  private:
   class _Internal;
@@ -427,15 +579,19 @@ class S_OUTSIDE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
 class C_OUTSIDE final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.C_OUTSIDE) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_OUTSIDE) */ {
  public:
   inline C_OUTSIDE() : C_OUTSIDE(nullptr) {}
+  ~C_OUTSIDE() override;
   explicit PROTOBUF_CONSTEXPR C_OUTSIDE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   C_OUTSIDE(const C_OUTSIDE& from);
@@ -508,15 +664,29 @@ class C_OUTSIDE final :
   C_OUTSIDE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<C_OUTSIDE>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_OUTSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_OUTSIDE& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const C_OUTSIDE& from) {
+    C_OUTSIDE::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_OUTSIDE& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_OUTSIDE* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -537,6 +707,18 @@ class C_OUTSIDE final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.C_OUTSIDE)
  private:
   class _Internal;
@@ -545,15 +727,19 @@ class C_OUTSIDE final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
 class S_START final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.S_START) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_START) */ {
  public:
   inline S_START() : S_START(nullptr) {}
+  ~S_START() override;
   explicit PROTOBUF_CONSTEXPR S_START(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   S_START(const S_START& from);
@@ -626,15 +812,29 @@ class S_START final :
   S_START* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<S_START>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const S_START& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const S_START& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const S_START& from) {
+    S_START::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const S_START& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(S_START* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -655,6 +855,18 @@ class S_START final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.S_START)
  private:
   class _Internal;
@@ -663,15 +875,19 @@ class S_START final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // -------------------------------------------------------------------
 
 class C_START final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Protocol.C_START) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_START) */ {
  public:
   inline C_START() : C_START(nullptr) {}
+  ~C_START() override;
   explicit PROTOBUF_CONSTEXPR C_START(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   C_START(const C_START& from);
@@ -744,15 +960,29 @@ class C_START final :
   C_START* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<C_START>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const C_START& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_START& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const C_START& from) {
+    C_START::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const C_START& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_START* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -773,6 +1003,18 @@ class C_START final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kXFieldNumber = 1,
+  };
+  // int32 x = 1;
+  void clear_x();
+  int32_t x() const;
+  void set_x(int32_t value);
+  private:
+  int32_t _internal_x() const;
+  void _internal_set_x(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:Protocol.C_START)
  private:
   class _Internal;
@@ -781,7 +1023,10 @@ class C_START final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    int32_t x_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
 // ===================================================================
@@ -795,25 +1040,265 @@ class C_START final :
 #endif  // __GNUC__
 // S_INSIDE
 
+// int32 x = 1;
+inline void S_INSIDE::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t S_INSIDE::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t S_INSIDE::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_INSIDE.x)
+  return _internal_x();
+}
+inline void S_INSIDE::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void S_INSIDE::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_INSIDE.x)
+}
+
+// int32 y = 2;
+inline void S_INSIDE::clear_y() {
+  _impl_.y_ = 0;
+}
+inline int32_t S_INSIDE::_internal_y() const {
+  return _impl_.y_;
+}
+inline int32_t S_INSIDE::y() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_INSIDE.y)
+  return _internal_y();
+}
+inline void S_INSIDE::_internal_set_y(int32_t value) {
+  
+  _impl_.y_ = value;
+}
+inline void S_INSIDE::set_y(int32_t value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_INSIDE.y)
+}
+
+// int32 z = 3;
+inline void S_INSIDE::clear_z() {
+  _impl_.z_ = 0;
+}
+inline int32_t S_INSIDE::_internal_z() const {
+  return _impl_.z_;
+}
+inline int32_t S_INSIDE::z() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_INSIDE.z)
+  return _internal_z();
+}
+inline void S_INSIDE::_internal_set_z(int32_t value) {
+  
+  _impl_.z_ = value;
+}
+inline void S_INSIDE::set_z(int32_t value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_INSIDE.z)
+}
+
+// int32 yaw = 4;
+inline void S_INSIDE::clear_yaw() {
+  _impl_.yaw_ = 0;
+}
+inline int32_t S_INSIDE::_internal_yaw() const {
+  return _impl_.yaw_;
+}
+inline int32_t S_INSIDE::yaw() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_INSIDE.yaw)
+  return _internal_yaw();
+}
+inline void S_INSIDE::_internal_set_yaw(int32_t value) {
+  
+  _impl_.yaw_ = value;
+}
+inline void S_INSIDE::set_yaw(int32_t value) {
+  _internal_set_yaw(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_INSIDE.yaw)
+}
+
 // -------------------------------------------------------------------
 
 // C_INSIDE
+
+// int32 x = 1;
+inline void C_INSIDE::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t C_INSIDE::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t C_INSIDE::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_INSIDE.x)
+  return _internal_x();
+}
+inline void C_INSIDE::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void C_INSIDE::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_INSIDE.x)
+}
+
+// int32 y = 2;
+inline void C_INSIDE::clear_y() {
+  _impl_.y_ = 0;
+}
+inline int32_t C_INSIDE::_internal_y() const {
+  return _impl_.y_;
+}
+inline int32_t C_INSIDE::y() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_INSIDE.y)
+  return _internal_y();
+}
+inline void C_INSIDE::_internal_set_y(int32_t value) {
+  
+  _impl_.y_ = value;
+}
+inline void C_INSIDE::set_y(int32_t value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_INSIDE.y)
+}
+
+// int32 z = 3;
+inline void C_INSIDE::clear_z() {
+  _impl_.z_ = 0;
+}
+inline int32_t C_INSIDE::_internal_z() const {
+  return _impl_.z_;
+}
+inline int32_t C_INSIDE::z() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_INSIDE.z)
+  return _internal_z();
+}
+inline void C_INSIDE::_internal_set_z(int32_t value) {
+  
+  _impl_.z_ = value;
+}
+inline void C_INSIDE::set_z(int32_t value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_INSIDE.z)
+}
+
+// int32 yaw = 4;
+inline void C_INSIDE::clear_yaw() {
+  _impl_.yaw_ = 0;
+}
+inline int32_t C_INSIDE::_internal_yaw() const {
+  return _impl_.yaw_;
+}
+inline int32_t C_INSIDE::yaw() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_INSIDE.yaw)
+  return _internal_yaw();
+}
+inline void C_INSIDE::_internal_set_yaw(int32_t value) {
+  
+  _impl_.yaw_ = value;
+}
+inline void C_INSIDE::set_yaw(int32_t value) {
+  _internal_set_yaw(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_INSIDE.yaw)
+}
 
 // -------------------------------------------------------------------
 
 // S_OUTSIDE
 
+// int32 x = 1;
+inline void S_OUTSIDE::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t S_OUTSIDE::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t S_OUTSIDE::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_OUTSIDE.x)
+  return _internal_x();
+}
+inline void S_OUTSIDE::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void S_OUTSIDE::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_OUTSIDE.x)
+}
+
 // -------------------------------------------------------------------
 
 // C_OUTSIDE
+
+// int32 x = 1;
+inline void C_OUTSIDE::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t C_OUTSIDE::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t C_OUTSIDE::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_OUTSIDE.x)
+  return _internal_x();
+}
+inline void C_OUTSIDE::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void C_OUTSIDE::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_OUTSIDE.x)
+}
 
 // -------------------------------------------------------------------
 
 // S_START
 
+// int32 x = 1;
+inline void S_START::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t S_START::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t S_START::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_START.x)
+  return _internal_x();
+}
+inline void S_START::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void S_START::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.S_START.x)
+}
+
 // -------------------------------------------------------------------
 
 // C_START
+
+// int32 x = 1;
+inline void C_START::clear_x() {
+  _impl_.x_ = 0;
+}
+inline int32_t C_START::_internal_x() const {
+  return _impl_.x_;
+}
+inline int32_t C_START::x() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_START.x)
+  return _internal_x();
+}
+inline void C_START::_internal_set_x(int32_t value) {
+  
+  _impl_.x_ = value;
+}
+inline void C_START::set_x(int32_t value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_START.x)
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop

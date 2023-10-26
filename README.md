@@ -1,42 +1,46 @@
 # DefaultServer
-### Á¦ÀÛ ÀÌÀ¯
-- ½º¸¶ÀÏ°ÔÀÌÆ®¿¡¼­ ÆÀ ÇÁ·ÎÁ§Æ®¸¦ ÁøÇàÇÏ¸é¼­ ºÎÁ·Çß´ø Á¡À» º¸¿ÏÇÏ±â À§ÇØ Á¦ÀÛÇÏ¿´½À´Ï´Ù.
-- Ãß°¡ÀûÀ¸·Î ¼­¹ö °øºÎ¸¦ À§ÇØ¼­ Á¦ÀÛÇÏ¿´½À´Ï´Ù.
+### ì œì‘ ì´ìœ 
+- ìŠ¤ë§ˆì¼ê²Œì´íŠ¸ì—ì„œ íŒ€ í”„ë¡œì íŠ¸ë¥¼ ì§„í–‰í•˜ë©´ì„œ ë¶€ì¡±í–ˆë˜ ì ì„ ë³´ì™„í•˜ê¸° ìœ„í•´ ì œì‘í•˜ì˜€ìŠµë‹ˆë‹¤.
+  
+[ìŠ¤ë§ˆì¼ê²Œì´íŠ¸ íŒ€ í”„ë¡œì íŠ¸](https://github.com/Hong-Study/bluebird/tree/main/src)
+- ì¶”ê°€ì ìœ¼ë¡œ ì„œë²„ ê³µë¶€ë¥¼ ìœ„í•´ì„œ ì œì‘í•˜ì˜€ìŠµë‹ˆë‹¤.
 
-### ¼³¸í
-- °ÔÀÓ °³¹ß½Ã ¼­¹ö ÄÚ¾î Á¦ÀÛÇÏ´Â ±â°£À» ÁÙÀÌ±â À§ÇÑ ±âº» Åä´ë ¼­¹öÀÔ´Ï´Ù.
-- ÆĞÅ¶ Åë½ÅÀº Protobuf¸¦ »ç¿ëÇÑ´Ù´Â ÀüÁ¦ÇÏ·Î ±¸ÇöµÇ¾ú½À´Ï´Ù
+### ì„¤ëª…
+- ê²Œì„ ê°œë°œì‹œ ì„œë²„ ì½”ì–´ ì œì‘í•˜ëŠ” ê¸°ê°„ì„ ì¤„ì´ê¸° ìœ„í•œ ê¸°ë³¸ í† ëŒ€ ì„œë²„ì…ë‹ˆë‹¤.
+- íŒ¨í‚· í†µì‹ ì€ Protobufë¥¼ ì‚¬ìš©í•œë‹¤ëŠ” ì „ì œí•˜ë¡œ êµ¬í˜„ë˜ì—ˆìŠµë‹ˆë‹¤
 
 # Cshap Client
-## ¿ëµµ
-- Unity ¶Ç´Â C# ÇÁ·Î±×·¥¿¡¼­ C++ ¼­¹ö¿Í Åë½ÅÀ» À§ÇØ »ç¿ëÇÕ´Ï´Ù.
-- ¶ÇÇÑ ¼­·Î ´Ù¸¥ ¾ğ¾îÀÇ Åë½ÅÀ» À§ÇØ ProtocolBuf¸¦ »ç¿ëÇÕ´Ï´Ù. µû¶ó¼­ visual studio ¿¡¼­ Protobuf¸¦ Ãß°¡ÇØÁÖ¾î¾ß ÇÕ´Ï´Ù.
-- Åë½Å ¹æ½ÄÀº APM ¹æ½ÄÀÇ ºñµ¿±â Åë½ÅÀ» »ç¿ëÇÕ´Ï´Ù.
+## ìš©ë„
+- Unity ë˜ëŠ” C# í”„ë¡œê·¸ë¨ì—ì„œ C++ ì„œë²„ì™€ í†µì‹ ì„ ìœ„í•´ ì‚¬ìš©í•©ë‹ˆë‹¤.
+- ë˜í•œ ì„œë¡œ ë‹¤ë¥¸ ì–¸ì–´ì˜ í†µì‹ ì„ ìœ„í•´ ProtocolBufë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤. ë”°ë¼ì„œ visual studio ì—ì„œ Protobufë¥¼ ì¶”ê°€í•´ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤.
+- í†µì‹  ë°©ì‹ì€ APM ë°©ì‹ì˜ ë¹„ë™ê¸° í†µì‹ ì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
 
-## »ç¿ë ¹æ½Ä
-1. NetworkManager.Instance.Start() È£Ãâ
-2. Connect °¡ ½ÇÇà µÈ ÀÌÈÄ ÀÚµ¿À¸·Î Recv È£Ãâ
-3. Recv°¡ È£ÃâµÇ¸é PacketHeader¸¦ ÅëÇØ ÆĞÅ¶ ÇüÅÂ È®ÀÎ
-4. PacketHandler¿¡¼­ type¿¡ ¸Â´Â ÇÔ¼ö ½ÇÇà
-5. Send½Ã¿¡´Â NetworkManager.Instance.Send(IMessage)¸¦ ½ÇÇà
+## ì‚¬ìš© ë°©ì‹
+1. NetworkManager.Instance.Start() í˜¸ì¶œ
+2. Connect ê°€ ì‹¤í–‰ ëœ ì´í›„ ìë™ìœ¼ë¡œ Recv í˜¸ì¶œ
+3. Recvê°€ í˜¸ì¶œë˜ë©´ PacketHeaderë¥¼ í†µí•´ íŒ¨í‚· í˜•íƒœ í™•ì¸
+4. PacketHandlerì—ì„œ typeì— ë§ëŠ” í•¨ìˆ˜ ì‹¤í–‰
+5. Sendì‹œì—ëŠ” NetworkManager.Instance.Send(IMessage)ë¥¼ ì‹¤í–‰
 
 ---
 # C++ IOCP Server
-### ¿ëµµ
-- IOCP Server¸¦ À§ÇØ »ç¿ë
+- C++ 17ìœ¼ë¡œ ì œì‘
+
+### ìš©ë„
+- IOCP Serverë¥¼ ìœ„í•´ ì‚¬ìš©
 
 ### PacketGenerator
-- C# À¸·Î Á¦ÀÛµÈ PacketHandler.h ÀÚµ¿ ±¸Çö Åø
-- Enum.protoÀÇ enum INGAMEÀ» ÀĞ¾î¼­ Client¿ë PacketHandler¿Í Server¿ë PacketHandler¸¦ ÀÚµ¿À¸·Î ±¸ÇöÇØÁİ´Ï´Ù.
+- C# ìœ¼ë¡œ ì œì‘ëœ PacketHandler.h ìë™ êµ¬í˜„ íˆ´
+- Enum.protoì˜ enum INGAMEì„ ì½ì–´ì„œ Clientìš© PacketHandlerì™€ Serverìš© PacketHandlerë¥¼ ìë™ìœ¼ë¡œ êµ¬í˜„í•´ì¤ë‹ˆë‹¤.
 ```
 static void Main()
 {
-	//MakeProto(); // Enum.proto ¸¦ Åä´ë·Î Protocol.proto¸¦ ±¸ÇöÇØÁÜ
-	MakeHandle(); // Enum.Proto¸¦ Åä´ë·Î PacketHandler ±¸Çö
+	//MakeProto(); // Enum.proto ë¥¼ í† ëŒ€ë¡œ Protocol.protoë¥¼ êµ¬í˜„í•´ì¤Œ
+	MakeHandle(); // Enum.Protoë¥¼ í† ëŒ€ë¡œ PacketHandler êµ¬í˜„
 }
 ```
 
-[Enum.proto](Common/protoc-21.12-win64/bin/Enum.proto) Çü½Ä
+[Enum.proto](Common/protoc-21.12-win64/bin/Enum.proto) í˜•ì‹
 ```
 enum INGAME
 {
@@ -45,14 +49,14 @@ enum INGAME
 	START = 2;
 }
 ```
-¡Ø Protocol.proto°¡ ÀÚµ¿À¸·Î ºôµåµÇ¾î ÆÄÀÏ·Î ¸¸µé¾îÁö±æ ¿øÇÑ´Ù¸é ºôµåÀüÀÌº¥Æ®¿¡ [GenPackets.bat](Common/protoc-21.12-win64/bin/GenPackets.bat) ½ÇÇàÇÏµµ·Ï ÇÒ °Í
+â€» Protocol.protoê°€ ìë™ìœ¼ë¡œ ë¹Œë“œë˜ì–´ íŒŒì¼ë¡œ ë§Œë“¤ì–´ì§€ê¸¸ ì›í•œë‹¤ë©´ ë¹Œë“œì „ì´ë²¤íŠ¸ì— [GenPackets.bat](Common/protoc-21.12-win64/bin/GenPackets.bat) ì‹¤í–‰í•˜ë„ë¡ í•  ê²ƒ
 
-### ½ÇÇà ¹æ½Ä
-1. ServerService ¸¦ ÅëÇØ, Session ÇüÅÂ¿Í NetAddress ¸¦ Áı¾î³ÖÀ½ 
+### ì‹¤í–‰ ë°©ì‹
+1. ServerService ë¥¼ í†µí•´, Session í˜•íƒœì™€ NetAddress ë¥¼ ì§‘ì–´ë„£ìŒ 
 ```ServerServiceRef service = make_shared(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared));```
-2. service->Start() ½ÇÇà
-3. ½º·¹µå¸¦ ¸¸µé¾î service->GetIocpCore()->Dispatch() ½ÇÇà, ´Ü ½Ã°£ ÃÊ¸¦ Á¤ÇÏ°í ½ÍÀ¸¸é DispatchÀÇ ÀÎÀÚ·Î ³Ñ°ÜÁÖ¸é µÊ.
-4. GThreadManager->Join(); À» ÅëÇØ ´ë±â
+2. service->Start() ì‹¤í–‰
+3. ìŠ¤ë ˆë“œë¥¼ ë§Œë“¤ì–´ service->GetIocpCore()->Dispatch() ì‹¤í–‰, ë‹¨ ì‹œê°„ ì´ˆë¥¼ ì •í•˜ê³  ì‹¶ìœ¼ë©´ Dispatchì˜ ì¸ìë¡œ ë„˜ê²¨ì£¼ë©´ ë¨.
+4. GThreadManager->Join(); ì„ í†µí•´ ëŒ€ê¸°
 ```
 void DoWork(ServerServiceRef& service)
 {
@@ -86,13 +90,13 @@ int main()
 
 	GThreadManager->Join();
 
-	// À©¼Ó Á¾·á
+	// ìœˆì† ì¢…ë£Œ
 	SocketUtils::Clear();
 }
 ```
 
-5. Recv¸¦ ¹ŞÀ¸¸é PacketHandler¸¦ ÅëÇØ Å¸ÀÔ¿¡ ¸Â´Â ÇÔ¼ö ½ÇÇà
-´Ü, Protocol.proto ¿¡ ±¸ÇöµÈ ÆĞÅ¶ ÇüÅÂÀÇ ÇÔ¼ö¸¦ ¸ÂÃç¼­ Áı¾î³Ö¾î Áà¾ßÇÔ.
+5. Recvë¥¼ ë°›ìœ¼ë©´ PacketHandlerë¥¼ í†µí•´ íƒ€ì…ì— ë§ëŠ” í•¨ìˆ˜ ì‹¤í–‰
+ë‹¨, Protocol.proto ì— êµ¬í˜„ëœ íŒ¨í‚· í˜•íƒœì˜ í•¨ìˆ˜ë¥¼ ë§ì¶°ì„œ ì§‘ì–´ë„£ì–´ ì¤˜ì•¼í•¨.
 ```
 void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 {
@@ -103,15 +107,15 @@ void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
 }
 ```
 
-6. SessionManager°¡ ±¸ÇöµÇ¾î ÀÖÀ¸¸ç, ½Ì±ÛÅæÀ¸·Î Á¸Àç. manager¸¦ ÅëÇØ BoradCasting °¡´É
+6. SessionManagerê°€ êµ¬í˜„ë˜ì–´ ìˆìœ¼ë©°, ì‹±ê¸€í†¤ìœ¼ë¡œ ì¡´ì¬. managerë¥¼ í†µí•´ BoradCasting ê°€ëŠ¥
 
-### ÃßÈÄ ±¸ÇöÇÒ ±â´Éµé
-- Æ¯¼öÇÑ Memory ±¸ÇöÀº ¾ÆÁ÷ ¹Ì±¸Çö »óÅÂ, ÃßÈÄ¿¡ ÇÒ ¿¹Á¤ (Memory Pool, shared_ptr Custom)
-- JobQueue´Â ±¸ÇöµÇ¾î ÀÖÀ¸³ª JobQueue¿¡ Æ¯Á¤ ½Ã°£À» ³Ö´Â ±â´É ¹Ì±¸Çö, ±¸ÇöÇÒ ¿¹Á¤
+### ì¶”í›„ êµ¬í˜„í•  ê¸°ëŠ¥ë“¤
+- íŠ¹ìˆ˜í•œ Memory êµ¬í˜„ì€ ì•„ì§ ë¯¸êµ¬í˜„ ìƒíƒœ, ì¶”í›„ì— í•  ì˜ˆì • (Memory Pool, shared_ptr Custom)
+- JobQueueëŠ” êµ¬í˜„ë˜ì–´ ìˆìœ¼ë‚˜ JobQueueì— íŠ¹ì • ì‹œê°„ì„ ë„£ëŠ” ê¸°ëŠ¥ ë¯¸êµ¬í˜„, êµ¬í˜„í•  ì˜ˆì •
 
 ---
 # C++ Select Server
-## ¿ëµµ
-- IOCP¸¦ »ç¿ëÇÒ ÇÊ¿ä°¡ ¾øÀ» Á¤µµ·Î ÀÛÀº ±Ô¸ğ¿¡¼­ »ç¿ëÇÏ±â À§ÇØ Á¦ÀÛ
-- ¾ÆÁ÷ ¿¡ÄÚ Å×½ºÆ® Á¤µµ¸¸ ÇÏ°í, ½ÇÁ¦ µ¥ÀÌÅÍ´Â Å×½ºÆ® X
-- ÇöÀç ¿¡Æ®¸®¿¡¼­ Çß´ø °ÍÀ» Åä´ë·Î ¸®ÆÑÅä¸µ ¿¹Á¤
+## ìš©ë„
+- IOCPë¥¼ ì‚¬ìš©í•  í•„ìš”ê°€ ì—†ì„ ì •ë„ë¡œ ì‘ì€ ê·œëª¨ì—ì„œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì œì‘
+- ì•„ì§ ì—ì½” í…ŒìŠ¤íŠ¸ ì •ë„ë§Œ í•˜ê³ , ì‹¤ì œ ë°ì´í„°ëŠ” í…ŒìŠ¤íŠ¸ X
+- í˜„ì¬ ì—íŠ¸ë¦¬ì—ì„œ í–ˆë˜ ê²ƒì„ í† ëŒ€ë¡œ ë¦¬íŒ©í† ë§ ì˜ˆì •

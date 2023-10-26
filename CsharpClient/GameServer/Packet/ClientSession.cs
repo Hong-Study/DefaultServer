@@ -1,6 +1,7 @@
 ﻿using GameServer.ServerCore;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
+using Protocol;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -47,7 +48,7 @@ namespace GameServer.Packet
         public override void OnRecvPacket(ArraySegment<byte> buffer, PacketHeader header)
         {
             Console.WriteLine($"Header id : {header.type}, size : {header.size}");
-            PacketManager.Instance.ParsingPacket(buffer, header);
+            PacketHandler.Instance.ParsingPacket(buffer, header);
         }
 
         public override void OnSend(int size)

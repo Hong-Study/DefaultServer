@@ -103,3 +103,10 @@ void SocketUtils::Close(SOCKET& socket)
 		::closesocket(socket);
 	socket = INVALID_SOCKET;
 }
+
+string SocketUtils::GetHostDomainbyIp(string domain)
+{
+	//auto* hostIp = gethostbyname(domain.c_str());
+	//hostIp->h_addr_list[0];
+	return string();
+}

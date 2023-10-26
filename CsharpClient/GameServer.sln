@@ -5,10 +5,6 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "GameServer\GameServer.csproj", "{CB357B78-DE74-477E-9686-CC43158D7BB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{6B200F3F-9820-4155-87D1-AD421C485488}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcaketGenerator", "PcaketGenerator\PcaketGenerator.csproj", "{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,16 +15,9 @@ Global
 		{CB357B78-DE74-477E-9686-CC43158D7BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB357B78-DE74-477E-9686-CC43158D7BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB357B78-DE74-477E-9686-CC43158D7BB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{8E464ED1-BD9C-48F9-A4FA-8E3DF55EE7EF} = {6B200F3F-9820-4155-87D1-AD421C485488}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52390BFE-A8D0-4BFF-BE8A-874E4FABE0D3}

@@ -13,6 +13,7 @@ XCOPY /Y Enum.pb.cc "../../../IOCPServer/Server"
 XCOPY /Y ProtocolC.cs "../../../CsharpClient/GameServer/Packet"
 XCOPY /Y Enum.cs "../../../CsharpClient/GameServer/Packet"
 
+PAUSE
 IF ERRORLEVEL 1 PAUSE
 
 DEL /Q /F *.pb.h

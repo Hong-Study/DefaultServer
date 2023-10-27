@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Protocol.pb.h"
+#include <map>
 
 #if UE_BUILD_DEBUG + UE_BUILD_DEVELOPMENT + UE_BUILD_TEST + UE_BUILD_SHIPPING >= 1
 #include "Capstone.h"
 #endif
 
 using handleFunction = std::function<bool(PacketSessionRef&, BYTE*, uint16)>;
-extern map<uint16, handleFunction> _packetHandler;
+extern std::map<uint16, handleFunction> _packetHandler;
 template<typename PacketData, typename handleFunc>
 inline bool ParsingPacket(handleFunc func, PacketSessionRef& ref, BYTE* buffer, uint16 len);
 
@@ -20,7 +21,7 @@ public:
 	{
 		{1}
 	}
-	static bool PakcetHandle(PacketSessionRef & session, BYTE * buffer, int32 len)
+	static bool PakcetHandle(PacketSessionRef& session, BYTE* buffer, int32 len)
 	{
 		PacketHeader* head = reinterpret_cast<PacketHeader*>(buffer);
 
@@ -30,10 +31,10 @@ public:
 	}
 
 public:
-	{2}
+{2}
 
-	template<typename PacketData, typename PacketType>
-	static SendBufferRef _MakeSendBuffer(PacketData & pkt, PacketType type);
+template<typename PacketData, typename PacketType>
+static SendBufferRef _MakeSendBuffer(PacketData& pkt, PacketType type);
 };
 
 template<typename PacketData, typename PacketType>

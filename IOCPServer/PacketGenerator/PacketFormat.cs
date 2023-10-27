@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 class CppHandlerFormat
 {
-    public static string handlerFormat = @"bool Handle_{0}(PacketSessionRef& ref, Protocol::C_{0} pkt);
+    public static string handlerFormat = @"bool Handle_{0}(PacketSessionRef& ref, Protocol::{1}_{0} pkt);
 ";
-    public static string initFormat = @"        _packetHandler[Protocol::INGAME::{0}] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) {{ return ParsingPacket<Protocol::C_{0}>(Handle_{0}, ref, buf, size); }};
+    public static string initFormat = @"        _packetHandler[Protocol::INGAME::{0}] = [](PacketSessionRef& ref, BYTE* buf, uint16 size) {{ return ParsingPacket<Protocol::{1}_{0}>(Handle_{0}, ref, buf, size); }};
 ";
-    public static string makeFormat = @"    static SendBufferRef MakeSendBuffer(Protocol::S_{0} pkt) {{ return _MakeSendBuffer(pkt, Protocol::INGAME::{0}); }}
+    public static string makeFormat = @"    static SendBufferRef MakeSendBuffer(Protocol::{1}_{0} pkt) {{ return _MakeSendBuffer(pkt, Protocol::INGAME::{0}); }}
 ";
 }
 

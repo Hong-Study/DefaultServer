@@ -44,34 +44,37 @@ namespace PacketGenerator
         private void MakeCppHandle(bool isServer = true)
         {
             List<string> types = ReadFile(filePath);
-            string[] serverHnadlers = new string[3];
+            string[] handlers = new string[4];
 
             foreach (string type in types)
             {
                 if (isServer)
                 {
                     // 핸들러 코드 추가
-                    serverHnadlers[0] += string.Format(CppHandlerFormat.handlerFormat, type, "C");
+                    handlers[0] += string.Format(CppHandlerFormat.handlerFormat, type, "C");
 
                     // 초기화 코드 추가
-                    serverHnadlers[1] += string.Format(CppHandlerFormat.initFormat, type, "C");
+                    handlers[1] += string.Format(CppHandlerFormat.initFormat, type, "C");
 
                     // 생성 코드 (MakeSendBuffer) 추가
-                    serverHnadlers[2] += string.Format(CppHandlerFormat.makeFormat, type, "S");
+                    handlers[2] += string.Format(CppHandlerFormat.makeFormat, type, "S");
                 }
                 else
                 {
                     // 핸들러 코드 추가
-                    serverHnadlers[0] += string.Format(CppHandlerFormat.handlerFormat, type, "S");
+                    handlers[0] += string.Format(CppHandlerFormat.handlerFormat, type, "S");
 
                     // 초기화 코드 추가
-                    serverHnadlers[1] += string.Format(CppHandlerFormat.initFormat, type, "S");
+                    handlers[1] += string.Format(CppHandlerFormat.initFormat, type, "S");
 
                     // 생성 코드 (MakeSendBuffer) 추가
-                    serverHnadlers[2] += string.Format(CppHandlerFormat.makeFormat, type, "C");
+                    handlers[2] += string.Format(CppHandlerFormat.makeFormat, type, "C");
                 }
-
             }
+            if (isServer)
+                handlers[3] = "ServerPacketHandler";
+            else
+                handlers[3] = "ClientPacketHandler";
 
             string cppPacketHandler = "";
 
@@ -83,9 +86,10 @@ namespace PacketGenerator
                     char c = line[n + 1];
                     int i = int.Parse(c.ToString());
 
-                    if (serverHnadlers.Length > i)
+                    if (handlers.Length > i)
                     {
-                        cppPacketHandler += serverHnadlers[i];
+                        string newLine = line.Replace("{" + c + "}", handlers[i]);
+                        cppPacketHandler += newLine;
                     }
                 }
                 else
@@ -216,10 +220,10 @@ namespace PacketGenerator
 
                     }
 
-                    if (line.Contains("S_"))
+                    if (line.Contains("C_"))
                     {
                         isClient = true;
-                        int index = line.IndexOf("S_");
+                        int index = line.IndexOf("C_");
                         subStr = line.Substring(index + 2);
                         if (types.Contains(subStr))
                         {
@@ -228,10 +232,10 @@ namespace PacketGenerator
 
                         continue;
                     }
-                    else if (line.Contains("C_"))
+                    else if (line.Contains("S_"))
                     {
                         isServer = true;
-                        int index = line.IndexOf("C_");
+                        int index = line.IndexOf("S_");
                         subStr = line.Substring(index + 2);
                         if (types.Contains(subStr))
                         {

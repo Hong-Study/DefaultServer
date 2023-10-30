@@ -13,6 +13,8 @@ void DoWork(ServerServiceRef& service)
 		service->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->DoGlobalQueue();
+
+		GThreadManager->DoGlobalTimer();
 	}
 }
 
@@ -33,6 +35,11 @@ int main()
 					DoWork(service);
 				}
 			});
+	}
+
+	while (1)
+	{
+		Gtest->DoTimer(1000, &TestManager::Send, string("Hello World"));
 	}
 
 	GThreadManager->Join();

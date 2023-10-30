@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "ThreadManager.h"
-#include "CoreTLS.h"
-#include "CoreGlobal.h"
 #include "JobQueue.h"
+#include "JobTimer.h"
 
 /*------------------
 	ThreadManager
@@ -50,13 +49,18 @@ void ThreadManager::DoGlobalQueue()
 		JobQueueRef jobQueue = GQUEUE->Pop();
 		if (jobQueue == nullptr)
 			break;
-		
+
 		jobQueue->Excute();
 
 		int64 endTick = GetTickCount64();
 		if (endTick - startTick > WORK_TICK)
 			break;
 	}
+}
+
+void ThreadManager::DoGlobalTimer()
+{
+	GTIMER->Distribute(GetTickCount64());
 }
 
 void ThreadManager::InitTLS()

@@ -3,9 +3,14 @@
 
 shared_ptr<TestManager> Gtest = make_shared<TestManager>();
 
-void TestManager::Send(PacketSessionRef ref, SendBufferRef sendBuf)
+void TestManager::Send(string prints)
 {
-	ref->Send(sendBuf);
+	cout << prints << endl;
+}
+
+void TestManager::SendByNow(string str)
+{
+	cout << str << endl;
 }
 
 

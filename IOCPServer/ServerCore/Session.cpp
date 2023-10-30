@@ -139,7 +139,7 @@ void Session::ProcessConnect()
 
 	OnConnected();
 
-	SESSIONS->PushSession(GetSessionRef());
+	GSESSIONS->PushSession(GetSessionRef());
 
 	RegisterRecv();
 }
@@ -150,7 +150,7 @@ void Session::ProcessDisconnect()
 
 	OnDisconnected();
 
-	SESSIONS->PopSession(GetSessionRef());
+	GSESSIONS->PopSession(GetSessionRef());
 }
 
 void Session::RegisterSend()

@@ -18,12 +18,13 @@ void Lock::WriteLock(const char* name)
 
 	// 아무도 없다면 경쟁한다
 	const int64 beginTick = ::GetTickCount64();
-	const uint32 desired = (LThreadId << 16) & WRITE_THREAD_MASK;
-	uint32 expired = EMPTY_FLAG;
+	const uint32 desired = ((LThreadId << 16) & WRITE_THREAD_MASK);
 	while (true)
 	{
 		for (uint32 spinCount = 0; spinCount < MAX_SPIN_COUNT; spinCount++)
 		{
+			uint32 expired = EMPTY_FLAG;
+
 			if (_lockFlag.compare_exchange_strong(expired, desired))
 			{
 				_writeCount++;

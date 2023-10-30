@@ -1,14 +1,16 @@
 #include "pch.h"
 #include "JobQueue.h"
-#include "GlobalQueue.h"
 
-void JobQueue::Push(JobRef job)
+void JobQueue::Push(JobRef job, bool isExcutePush)
 {
 	int32 size = _insideQueue.fetch_add(1);
 	_queue.Push(job);
 
 	if (size == 0) {
-		Excute();
+		if (isExcutePush)
+			Excute();
+		else
+			GQUEUE->Push(shared_from_this());
 	}
 }
 
@@ -37,7 +39,6 @@ void JobQueue::Excute()
 			if (endTick - startTick > WORK_TICK)
 			{
 				GQUEUE->Push(shared_from_this());
-
 				break;
 			}
 		}

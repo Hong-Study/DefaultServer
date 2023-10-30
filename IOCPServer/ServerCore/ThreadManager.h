@@ -15,7 +15,9 @@ public:
 
 	void	Launch(function<void(void)> callback);
 	void	Join();
+
 	void	DoGlobalQueue();
+	void	DoGlobalTimer();
 
 private:
 	static void InitTLS();

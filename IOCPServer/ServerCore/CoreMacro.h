@@ -9,9 +9,12 @@
 #define READ_LOCK ReadLockGuard _guard(_lock, typeid(this).name())
 #define READ_MANY_LOCk(i) ReadLockGuard _guard##i(_lock[i], typeid(this).name())
 
-#define SESSIONS	SessionManager::GetInstance()
-#define GQUEUE		GlobalQueue::GetInstance()
-#define TIME		TimeManager::GetInstance()
+#define SINGLE(classname) classname::GetInstance()
+
+#define GSESSIONS	SINGLE(SessionManager)
+#define GQUEUE		SINGLE(GlobalQueue)
+#define GTIMER		SINGLE(JobTimer)
+#define TIME		SINGLE(TimeManager)
 
 #define SINGLETON(classname)							\
 private:												\

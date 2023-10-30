@@ -1,8 +1,10 @@
 #pragma once
+
 class TestManager : public JobQueue
 {
 public:
-	void Send(PacketSessionRef ref, SendBufferRef sendBuf);
+	void Send(string prints);
+	void SendByNow(string str);
 };
 
 extern shared_ptr<TestManager> Gtest;

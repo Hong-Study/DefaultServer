@@ -1,25 +1,27 @@
 #pragma once
 
-struct JobData
+struct TimeItem
 {
-	JobData(JobQueueRef owner, JobRef job, uint64 time) : owner(owner), job(job), time(time) { }
-	
-	bool				operator<(uint64 currentTick) { return time < currentTick; }
+	TimeItem(uint64 tick, weak_ptr<JobQueue> owner, JobRef job)
+		: tickTime(tick), owner(owner), job(job) { }
 
-	weak_ptr<JobQueue>	owner;
-	JobRef				job;
-	uint64				time;
+	bool operator<(const TimeItem& other) const { return tickTime > other.tickTime; }
+	bool compareTick(const uint64 currentTick) { return tickTime < currentTick; }
+
+	uint64 tickTime;
+	weak_ptr<JobQueue> owner;
+	JobRef job;
 };
 
 class JobTimer
 {
+	SINGLETON(JobTimer)
 public:
-	void			Reserve(JobQueueRef owner, JobRef job, uint64 tickAfter);
-	void			Distribute(uint64 now);
+	void			Reserve(uint64 afterTick, weak_ptr<JobQueue> owner, JobRef job);
+	void			Distribute(uint64 startTick);
 	void			Clear();
 
 private:
-	LockQueue<JobData*>	_jobDatas;
-	atomic<bool>		_isDistribute = false;
+	USE_LOCK;
+	priority_queue<TimeItem, vector<TimeItem>, std::less<TimeItem>> _timers;
 };
-

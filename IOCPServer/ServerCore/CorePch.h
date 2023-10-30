@@ -1,7 +1,5 @@
 #pragma once
 
-#define WIN32_LEAN_AND_MEAN
-
 #include "Types.h"
 #include "CoreMacro.h"
 #include "CoreTLS.h"
@@ -23,17 +21,16 @@
 #include <ws2tcpip.h>
 #include <winsock2.h>
 #include <windows.h>
+#include <functional>
 #include <iostream>
 using namespace std;
 
 #include <assert.h>
 #include "Lock.h"
 #include "SocketUtils.h"
-#include "IocpCore.h"
-#include "IocpEvent.h"
 #include "SessionManager.h"
-#include "Session.h"
-
+#include "JobQueue.h"
 #include "ThreadManager.h"
 #include "GlobalQueue.h"
+
 #pragma comment(lib, "ws2_32.lib")

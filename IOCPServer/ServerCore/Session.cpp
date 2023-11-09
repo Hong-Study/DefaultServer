@@ -312,10 +312,12 @@ bool Session::RegisterDisconnect()
 
 PacketSession::PacketSession()
 {
+
 }
 
 PacketSession::~PacketSession()
 {
+
 }
 
 int32 PacketSession::OnRecv(BYTE* buffer, int32 len)

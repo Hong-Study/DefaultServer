@@ -149,10 +149,12 @@
     </ClCompile>
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="ClientSession.cpp" />
+    <ClCompile Include="TempClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="ClientSession.h" />
+    <ClInclude Include="TempClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

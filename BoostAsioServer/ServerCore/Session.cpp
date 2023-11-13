@@ -140,7 +140,7 @@ void Session::ProcessRead(const boost::system::error_code& err, uint64 size)
 			AsyncDisconnect("Write Overflow");
 			return;
 		}
-		int32 processLen = OnRead(_recvBuffer.ReadPos(), _recvBuffer.DataSize());
+		uint64 processLen = OnRead(_recvBuffer.ReadPos(), _recvBuffer.DataSize());
 		if (processLen < 0 || size < processLen || _recvBuffer.OnRead(processLen) == false)
 		{
 			AsyncDisconnect("Read Overflow");

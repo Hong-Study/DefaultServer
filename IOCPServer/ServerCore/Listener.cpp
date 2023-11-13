@@ -51,7 +51,7 @@ void Listener::RegisterAccept(AcceptEvent* event)
 {
 	SessionRef session = _sessioFunction();
 	GetIocpCore()->Register(session);
-
+	
 	event->sessionRef = session;
 
 	DWORD bytesReceived = 0;

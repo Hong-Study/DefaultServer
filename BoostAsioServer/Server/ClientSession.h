@@ -14,4 +14,3 @@ public:
 
 	virtual void OnWrite(uint64 len) override;
 };
-

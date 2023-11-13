@@ -1,6 +1,8 @@
 #pragma once
 #include "Accepter.h"
 
+// io_context의 캡슐화를 조금 더 생각해볼 것
+
 class Service
 {
 public:
@@ -8,10 +10,9 @@ public:
 	virtual ~Service();
 
 	virtual bool Start() abstract;
-	void Run() { _ioContext.run(); }
+	void Run() { io_context.run(); }
 
 protected:
-	boost::asio::io_context _ioContext;
 	boost::asio::ip::tcp::endpoint _endPoint;
 
 	SessionFunction _sessionFunction;

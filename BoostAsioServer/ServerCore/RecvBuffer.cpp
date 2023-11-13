@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RecvBuffer.h"
 
-RecvBuffer::RecvBuffer(int32 bufferSize) : _bufferSize(bufferSize)
+RecvBuffer::RecvBuffer(uint64 bufferSize) : _bufferSize(bufferSize)
 {
 	_capacity = bufferSize * BUFFER_COUNT;
 	_buffer.resize(_capacity);
@@ -14,7 +14,7 @@ RecvBuffer::~RecvBuffer()
 
 void RecvBuffer::Clean()
 {
-	int32 dataSize = DataSize();
+	uint64 dataSize = DataSize();
 	if (dataSize == 0)
 	{
 		// 딱 마침 읽기+쓰기 커서가 동일한 위치라면, 둘 다 리셋.
@@ -32,7 +32,7 @@ void RecvBuffer::Clean()
 	}
 }
 
-bool RecvBuffer::OnRead(int32 numOfBytes)
+bool RecvBuffer::OnRead(uint64 numOfBytes)
 {
 	if (numOfBytes > DataSize())
 		return false;
@@ -41,7 +41,7 @@ bool RecvBuffer::OnRead(int32 numOfBytes)
 	return true;
 }
 
-bool RecvBuffer::OnWrite(int32 numOfBytes)
+bool RecvBuffer::OnWrite(uint64 numOfBytes)
 {
 	if (numOfBytes > FreeSize())
 		return false;

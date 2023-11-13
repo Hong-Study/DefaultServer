@@ -45,6 +45,15 @@
     <ClCompile Include="Accepter.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="JobQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Pch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -76,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="Accepter.h">
       <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="JobQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Pch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

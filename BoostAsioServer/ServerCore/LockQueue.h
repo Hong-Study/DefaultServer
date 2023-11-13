@@ -1,8 +1,5 @@
 #pragma once
 
-#define USE_LOCK std::mutex _mutex
-#define WRITE_LOCK std::lock_guard<std::mutex> lock_guard(_mutex)
-
 template<typename T>
 class LockQueue
 {
@@ -32,7 +29,6 @@ public:
 
 		for (int i = 0; i < _queue.size(); i++)
 		{
-			_queue.front();
 			datas.push_back(_queue.front());
 			_queue.pop();
 		}
@@ -40,7 +36,7 @@ public:
 		return true;
 	}
 
-	int Size()
+	uint64 Size()
 	{
 		WRITE_LOCK;
 		return _queue.size();

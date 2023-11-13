@@ -27,7 +27,7 @@ bool ServerService::Start()
 {
 	for (int i = 0; i < _accepterCount; i++)
 	{
-		std::shared_ptr<Accepter> accepter = make_shared<Accepter>(_ioContext, _endPoint, _sessionFunction);
+		std::shared_ptr<Accepter> accepter = make_shared<Accepter>(io_context, _endPoint, _sessionFunction);
 		accepter->StartAccept();
 
 		_accepters.emplace_back(accepter);

@@ -1,6 +1,12 @@
 #pragma once
+
+#include <boost/asio.hpp>
+#include <boost/asio/buffer.hpp>
+#include <boost/bind/bind.hpp>
+
 #include "Types.h"
 #include "CoreMacro.h"
+#include "CoreGlobal.h"
 
 #include <iostream>
 #include <memory>
@@ -13,10 +19,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <functional>
-
-#include <boost/asio.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/bind/bind.hpp>
 
 using SessionFunction = std::function<SessionRef(boost::asio::io_context&)>;
 using boost::asio::ip::tcp;

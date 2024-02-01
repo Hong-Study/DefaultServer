@@ -33,7 +33,7 @@
 - IOCP Server를 위해 사용
 
 ### 자세한 설명
-![IOCP Server](https://github.com/Hong-Study/DefaultServer/tree/main/IOCPServer)
+[IOCP Server](https://github.com/Hong-Study/DefaultServer/tree/main/IOCPServer)
 
 # C++ Boost::Asio 서버
 - Boost::Asio 강의를 듣고 기존의 IOCP 서버를 토대로 코어를 변경해보았습니다.
@@ -41,7 +41,14 @@
 - 또한 Boost::asio는 리눅스, 윈도우 모두에서 작동이 가능하므로 서버 구분 없이도 구현이 가능하다는 장점이 있습니다.
 
 ### 자세한 설명
-![Boost::Asio Server](https://github.com/Hong-Study/DefaultServer/tree/main/BoostAsioServer)
+[Boost::Asio Server](https://github.com/Hong-Study/DefaultServer/tree/main/BoostAsioServer)
+
+# C++ Select Server
+## 용도
+- IOCP를 사용할 필요가 없을 정도로 작은 규모에서 사용하기 위해 제작
+- 아직 에코 테스트 정도만 하고, 실제 데이터는 테스트 X
+- 현재 에트리에서 했던 것을 토대로 리팩토링 예정
+[Etri](https://github.com/Hong-Study/Etri)
 
 # PacketGenerator
 - C# 으로 제작된 PacketHandler.h 자동 구현 툴
@@ -85,83 +92,3 @@ enum INGAME
 }
 ```
 ※ Protocol.proto가 자동으로 빌드되어 파일로 만들어지길 원한다면 빌드전이벤트에 [GenPackets.bat](Common/protoc-21.12-win64/bin/GenPackets.bat) 실행하도록 할 것
-
-### 실행 방식
-1. ServerService 를 통해, Session 형태와 NetAddress 를 집어넣음 
-```ServerServiceRef service = make_shared(NetAddress(L"127.0.0.1", 7777), 10, std::function<SessionRef()>(make_shared));```
-2. service->Start() 실행
-3. 스레드를 만들어 service->GetIocpCore()->Dispatch() 실행, 단 시간 초를 정하고 싶으면 Dispatch의 인자로 넘겨주면 됨.
-4. GThreadManager->Join(); 을 통해 대기
-```
-enum
-{
-	WORKER_TICK = 64
-};
-
-void DoWorkerJob(ServerServiceRef& service)
-{
-	while (true)
-	{
-		//LEndTickCount = ::GetTickCount64() + WORKER_TICK;
-
-		// 네트워크 입출력 처리 -> 인게임 로직까지 (패킷 핸들러에 의해)
-		service->GetIocpCore()->Dispatch(10);
-
-		GThreadManager->DoGlobalQueue();
-
-		// 예약된 일감 처리
-		GThreadManager->DoGlobalTimer();
-	}
-}
-int main()
-{
-	// CALL $(SolutionDir)PacketGenerator\bin\Debug\net6.0\PacketGenerator.exe
-
-	ServerPacketHandler::Init();
-	SocketUtils::Init();
-
-	ServerServiceRef service = make_shared<ServerService>(NetAddress(L"127.0.0.1", 4000), 10, std::function<SessionRef()>(make_shared<GameSession>));
-
-	ASSERT_CRASH(service->Start());
-
-	for (int32 i = 0; i < 5; i++)
-	{
-		GThreadManager->Launch([&service]()
-			{
-				DoWorkerJob(service);
-			});		
-	}
-
-	// Main Thread
-	DoWorkerJob(service);
-
-	GThreadManager->Join();
-}
-```
-
-5. Recv를 받으면 PacketHandler를 통해 타입에 맞는 함수 실행
-단, Protocol.proto 에 구현된 패킷 형태의 함수를 맞춰서 집어넣어 줘야함.
-```
-void ClinetSession::OnRecvPacket(BYTE* buffer, int32 len)
-{
-	PacketSessionRef ref = GetPacketSessionRef();
-
-	if (PacketHandler::PakcetHandle(ref, buffer, len) == false)
-		cout << "Recv Failed" << endl;
-}
-```
-
-6. SessionManager가 구현되어 있으며, 싱글톤으로 존재. manager를 통해 BoradCasting 가능
-
-### 추후 구현할 기능들
-- 특수한 Memory 구현은 아직 미구현 상태, 추후에 할 예정 (Memory Pool, shared_ptr Custom)
-- JobQueue는 구현되어 있으나 JobQueue에 특정 시간을 넣는 기능인 JobTimer 미구현, 구현하는 중
-
----
-# C++ Select Server
-## 용도
-- IOCP를 사용할 필요가 없을 정도로 작은 규모에서 사용하기 위해 제작
-- 아직 에코 테스트 정도만 하고, 실제 데이터는 테스트 X
-- 현재 에트리에서 했던 것을 토대로 리팩토링 예정
-
-# C++ Boost::asio Server

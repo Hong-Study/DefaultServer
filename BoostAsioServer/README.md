@@ -3,8 +3,8 @@
 ![image](https://github.com/Hong-Study/DefaultServer/assets/48054868/2309c8ef-d3ec-4bf3-aa13-c73a83172887)
 
 ### 설명
-- 기본적으로 클라이언트가 접속하면 Session 형태로 관리됩니다. ![ClientSession](https://github.com/Hong-Study/DefaultServer/blob/main/IOCPServer/Server/ClinetSession.h)
-- 패킷의 경우, Protobuf를 사용하여 Send, Recv를 하게 되며 해당 핸들러 부분은 ![ServerPacketHandler](https://github.com/Hong-Study/DefaultServer/blob/main/IOCPServer/Server/PacketHandler.h) 에 담겨있습니다.
+- 기본적으로 클라이언트가 접속하면 Session 형태로 관리됩니다. [ClientSession](https://github.com/Hong-Study/DefaultServer/blob/main/IOCPServer/Server/ClinetSession.h)
+- 패킷의 경우, Protobuf를 사용하여 Send, Recv를 하게 되며 해당 핸들러 부분은 [ServerPacketHandler](https://github.com/Hong-Study/DefaultServer/blob/main/IOCPServer/Server/PacketHandler.h) 에 담겨있습니다.
 
 
 ### 실행 방식

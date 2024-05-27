@@ -1,13 +1,8 @@
 #include "pch.h"
 #include "Lock.h"
-#include "DeadLockProfiler.h"
 
 void Lock::WriteLock(const char* name)
 {
-#ifdef _DEBUG
-	GDeadLockProfiller->PushLock(name);
-#endif 
-
 	// 똑같은 스레드일때 바로 잡는다
 	const uint32 lockThreadId = (_lockFlag.load() & WRITE_THREAD_MASK) >> 16;
 	if (LThreadId == lockThreadId)
@@ -42,10 +37,6 @@ void Lock::WriteLock(const char* name)
 
 void Lock::WriteUnlock(const char* name)
 {
-#ifdef _DEBUG
-	GDeadLockProfiller->PopLock(name);
-#endif
-
 	if ((_lockFlag.load() & READ_COUNT_MASK) != 0)
 		CRASH("INVALID_UNLOCK_ORDER");
 
@@ -57,10 +48,6 @@ void Lock::WriteUnlock(const char* name)
 
 void Lock::ReadLock(const char* name)
 {
-#ifdef _DEBUG
-	GDeadLockProfiller->PushLock(name);
-#endif
-
 	// 동일한 쓰레드가 소유하고 있다면 무조건 성공.
 	const uint32 lockThreadId = (_lockFlag.load() & WRITE_THREAD_MASK) >> 16;
 	if (LThreadId == lockThreadId)
@@ -89,10 +76,6 @@ void Lock::ReadLock(const char* name)
 
 void Lock::ReadUnlock(const char* name)
 {
-#ifdef _DEBUG
-	GDeadLockProfiller->PopLock(name);
-#endif 
-
 	if ((_lockFlag.fetch_sub(1) & READ_COUNT_MASK) == 0)
 		CRASH("MULTIPLE_UNLOCK");
 }

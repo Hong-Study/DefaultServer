@@ -36,6 +36,7 @@
 [IOCP Server](https://github.com/Hong-Study/DefaultServer/tree/main/IOCPServer)
 
 # C++ Boost::Asio 서버
+- 변경 예정
 - Boost::Asio 강의를 듣고 기존의 IOCP 서버를 토대로 코어를 변경해보았습니다.
 - 실제로 IOCP 서버의 코드보다 간결해졌으며 구현에 있어서도 구현에 있어서도 쉬울 수 있었습니다.
 - 또한 Boost::asio는 리눅스, 윈도우 모두에서 작동이 가능하므로 서버 구분 없이도 구현이 가능하다는 장점이 있습니다.
@@ -45,9 +46,9 @@
 
 # C++ Select Server
 ## 용도
+- 변경 예정
 - IOCP를 사용할 필요가 없을 정도로 작은 규모에서 사용하기 위해 제작
 - 아직 에코 테스트 정도만 하고, 실제 데이터는 테스트 X
-- 현재 에트리에서 했던 것을 토대로 리팩토링 예정
 
 [Etri](https://github.com/Hong-Study/Etri)
 

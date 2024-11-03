@@ -133,7 +133,7 @@ void IOCompletionPort::CreateClient(const UINT32 maxClientCount)
 {
 	for (UINT32 i = 0; i < maxClientCount; ++i)
 	{
-		_ClientInfos.emplace_back();
+		_ClientInfos.emplace_back(new stClientInfo());
 	}
 }
 
@@ -368,4 +368,43 @@ void IOCompletionPort::WokerThread()
 
 void IOCompletionPort::AcceptThread()
 {
+	SOCKADDR_IN sockAddr;
+	int addrLen = sizeof(sockAddr);
+
+	while (_IsAccepterRun)
+	{
+		stClientInfo* clientInfo = GetEmptyClientInfo();
+		if (nullptr == clientInfo)
+		{
+			printf("[에러] Client Full\n");
+			return;;
+		}
+
+		clientInfo->m_socketClient = accept(_ListenSocket, (SOCKADDR*)&sockAddr, &addrLen);
+		if (INVALID_SOCKET == clientInfo->m_socketClient)
+		{
+			continue;
+		}
+
+		//I/O Completion Port객체와 소켓을 연결시킨다.
+		bool bRet = BindIOCompletionPort(clientInfo);
+		if (false == bRet)
+		{
+			return;
+		}
+
+		//Recv Overlapped I/O작업을 요청해 놓는다.
+		bRet = BindRecv(clientInfo);
+		if (false == bRet)
+		{
+			return;
+		}
+
+		char clientIP[32] = { 0, };
+		inet_ntop(AF_INET, &(sockAddr.sin_addr), clientIP, 32 - 1);
+		printf("클라이언트 접속 : IP(%s) SOCKET(%d)\n", clientIP, (int)clientInfo->m_socketClient);
+
+		//클라이언트 갯수 증가
+		++_ClientCnt;
+	}
 }
